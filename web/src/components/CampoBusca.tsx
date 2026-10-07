@@ -107,6 +107,11 @@ export default function CampoBusca({ rotulo, placeholder, valor, locais, onSelec
           <IcFechar size={18} />
         </button>
       )}
+      {aberto && texto.trim().length >= 3 && !carregando && sugestoes.length === 0 && (
+        <ul className="sugestoes" role="listbox">
+          <li className="aviso">Nenhum resultado. O OpenStreetMap busca por palavras completas (ex.: “Rua Candelária”).</li>
+        </ul>
+      )}
       {aberto && (sugestoes.length > 0 || carregando) && (
         <ul className="sugestoes" id={`${id}-lista`} role="listbox">
           {sugestoes.map((s, i) => (

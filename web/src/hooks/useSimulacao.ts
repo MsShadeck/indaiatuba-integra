@@ -76,12 +76,21 @@ export function useSimulacao(it: Itinerario | null, onConcluir?: (it: Itinerario
           pos = fim ? t.geometria[t.geometria.length - 1] : t.geometria[0];
         }
         const concluida = tMs >= total;
-        if (concluida && !s.concluida) setTimeout(() => concluirRef.current?.(it), 0);
         return { ...s, tMs, pos, trechoIdx: idx, distNoTrecho, progresso: tMs / total, concluida };
       });
     }, 200);
     return () => clearInterval(id);
   }, [it, sim.ativo, sim.pausado, sim.concluida]);
+
+  // dispara a conclusão fora do updater (updaters precisam ser puros; o StrictMode os executa 2×)
+  const concluidaDe = useRef<string | null>(null);
+  useEffect(() => {
+    if (it && sim.concluida && concluidaDe.current !== it.id) {
+      concluidaDe.current = it.id;
+      concluirRef.current?.(it);
+    }
+    if (!sim.ativo) concluidaDe.current = null;
+  }, [sim.concluida, sim.ativo, it]);
 
   return {
     sim,

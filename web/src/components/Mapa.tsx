@@ -39,7 +39,9 @@ const iconePonto = (tipo: 'de' | 'para') =>
   icone(`pt|${tipo}`, `<div class="ponto-pin ${tipo}">${tipo === 'de' ? 'A' : 'B'}</div>`, [30, 30], 'pin-ponto');
 const iconeUsuario = () => icone('usuario', '<div class="usuario-pin"></div>', [24, 24], 'pin-usuario');
 
-function AjustarZoom({ itinerario, de, para }: { itinerario: Itinerario | null; de: Lugar | null; para: Lugar | null }) {
+function AjustarZoom({ itinerario, de, para, recolhido }: {
+  itinerario: Itinerario | null; de: Lugar | null; para: Lugar | null; recolhido: boolean;
+}) {
   const map = useMap();
   useEffect(() => {
     const pts: LatLon[] = itinerario
@@ -52,11 +54,11 @@ function AjustarZoom({ itinerario, de, para }: { itinerario: Itinerario | null; 
       const largo = x >= 900;
       map.fitBounds(L.latLngBounds(pts), {
         paddingTopLeft: largo ? [450, 90] : [24, 84],
-        paddingBottomRight: largo ? [40, 40] : [24, Math.round(y * 0.64) + 12],
+        paddingBottomRight: largo ? [40, 40] : [24, recolhido ? 170 : Math.round(y * 0.64) + 12],
         maxZoom: 16,
       });
     }
-  }, [itinerario?.id, de?.lat, de?.lon, para?.lat, para?.lon]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [itinerario?.id, de?.lat, de?.lon, para?.lat, para?.lon, recolhido]); // eslint-disable-line react-hooks/exhaustive-deps
   return null;
 }
 
@@ -79,9 +81,10 @@ interface Props {
   de: Lugar | null;
   para: Lugar | null;
   posicaoUsuario: LatLon | null;
+  painelRecolhido?: boolean;
 }
 
-export default function Mapa({ config, rede, ciclovias, aoVivo, camadas, itinerario, de, para, posicaoUsuario }: Props) {
+export default function Mapa({ config, rede, ciclovias, aoVivo, camadas, itinerario, de, para, posicaoUsuario, painelRecolhido = false }: Props) {
   const linhasUnicas = useMemo(() => {
     // um traçado por linha basta (o sentido de volta é o mesmo caminho)
     const vistos = new Set<string>();
@@ -97,7 +100,7 @@ export default function Mapa({ config, rede, ciclovias, aoVivo, camadas, itinera
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" maxZoom={19} />
       <ControleZoom />
-      <AjustarZoom itinerario={itinerario} de={de} para={para} />
+      <AjustarZoom itinerario={itinerario} de={de} para={para} recolhido={painelRecolhido} />
 
       {camadas.ciclovias && ciclovias && (
         <GeoJSON key="ciclovias" data={ciclovias}

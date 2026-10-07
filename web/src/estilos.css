@@ -62,7 +62,7 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid 
   padding: 6px 14px calc(env(safe-area-inset-bottom, 0px) + 14px);
   transition: max-height .25s ease;
 }
-.painel.recolhido { max-height: 132px; overflow: hidden; }
+.painel.recolhido { max-height: 150px; overflow: hidden; }
 .alca { display: flex; justify-content: center; width: 100%; border: 0; background: none; padding: 6px 0 10px; min-height: 28px; }
 .alca span { width: 44px; height: 5px; border-radius: 3px; background: #cbd5e1; }
 @media (min-width: 900px) {
@@ -215,7 +215,7 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid 
 @keyframes entrar { from { transform: translateY(-10px); opacity: 0; } }
 
 /* ---------- Simulação ---------- */
-.sim-barra { display: grid; gap: 8px; background: #f1f5f9; border-radius: 12px; padding: 10px 12px; margin-top: 10px; }
+.sim-barra { display: grid; gap: 8px; background: #f1f5f9; border-radius: 12px; padding: 10px 12px; margin-bottom: 10px; }
 .sim-barra .progresso { height: 8px; background: #cbd5e1; border-radius: 4px; overflow: hidden; }
 .sim-barra .progresso span { display: block; height: 100%; background: var(--marca); }
 .sim-barra .info { display: flex; justify-content: space-between; gap: 8px; font-size: .85rem; font-weight: 600; }

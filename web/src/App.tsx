@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { api } from './api';
 import CampoBusca from './components/CampoBusca';
 import CardOpcao from './components/CardOpcao';
@@ -25,6 +25,11 @@ export default function App() {
   const [camadas, setCamadas] = useState<Camadas>({ onibus: true, linhas: true, ecobike: true, patinetes: true, ciclovias: true });
   const [verCamadas, setVerCamadas] = useState(false);
   const [recolhido, setRecolhido] = useState(false);
+  const painelRef = useRef<HTMLElement>(null);
+  // recolhido, o painel mostra só o topo (alça + barra de simulação)
+  useEffect(() => {
+    if (recolhido && painelRef.current) painelRef.current.scrollTop = 0;
+  }, [recolhido]);
 
   const [de, setDe] = useState<Lugar | null>(null);
   const [para, setPara] = useState<Lugar | null>(null);
@@ -54,7 +59,10 @@ export default function App() {
 
   const selecionado = useMemo(() => opcoes.find((o) => o.id === selId) ?? null, [opcoes, selId]);
 
-  const notificar = useCallback((t: Toast) => setToasts((ts) => [...ts, t]), []);
+  const notificar = useCallback(
+    (t: Toast) => setToasts((ts) => [...ts, { ...t, id: `${t.id}-${Math.random().toString(36).slice(2, 7)}` }]),
+    [],
+  );
   const aoConcluir = useCallback((it: Itinerario) => {
     registrarViagem(it, de?.nome ?? 'Origem', para?.nome ?? 'Destino');
     notificar({
@@ -65,6 +73,8 @@ export default function App() {
   }, [notificar, de?.nome, para?.nome]);
   const simulacao = useSimulacao(selecionado, aoConcluir);
   const { sim } = simulacao;
+  // ao simular, recolhe o painel para o mapa ficar visível (no celular)
+  const controlesSim = { ...simulacao, iniciar: () => { simulacao.iniciar(); setRecolhido(true); } };
 
   async function planejar(d = de, p = para) {
     if (!d || !p) return;
@@ -120,7 +130,7 @@ export default function App() {
   return (
     <div className="app">
       <Mapa config={config} rede={rede} ciclovias={ciclovias} aoVivo={dados} camadas={camadas}
-        itinerario={selecionado} de={de} para={para} posicaoUsuario={sim.ativo ? sim.pos : null} />
+        itinerario={selecionado} de={de} para={para} posicaoUsuario={sim.ativo ? sim.pos : null} painelRecolhido={recolhido} />
 
       <header className="topo">
         <div className="marca">
@@ -142,11 +152,12 @@ export default function App() {
       {verImpacto && <PainelImpacto config={config} itinerario={selecionado} onFechar={() => setVerImpacto(false)} />}
       {verDemo && (
         <PainelDemo it={selecionado} onFechar={() => setVerDemo(false)} onErro={setErro}
-          onSimular={() => { simulacao.iniciar(); setRecolhido(true); }} />
+          onSimular={controlesSim.iniciar} />
       )}
 
-      <main className={`painel ${recolhido ? 'recolhido' : ''}`}>
+      <main ref={painelRef} className={`painel ${recolhido ? 'recolhido' : ''}`}>
         <button className="alca" onClick={() => setRecolhido((r) => !r)} aria-label={recolhido ? 'Expandir painel' : 'Recolher painel'}><span /></button>
+        {selecionado && sim.ativo && <ControlesSimulacao it={selecionado} {...controlesSim} />}
         <div className="busca">
           <div className="busca-campos">
             <CampoBusca rotulo="De" placeholder="Onde você está?" valor={de} locais={locais} onSelecionar={setDe} />
@@ -183,7 +194,7 @@ export default function App() {
         )}
         {selecionado && (
           <DetalheViagem it={selecionado} aoVivo={dados} agora={agora}>
-            <ControlesSimulacao it={selecionado} {...simulacao} />
+            {!sim.ativo && <ControlesSimulacao it={selecionado} {...controlesSim} />}
           </DetalheViagem>
         )}
       </main>

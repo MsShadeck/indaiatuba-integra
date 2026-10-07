@@ -26,11 +26,17 @@ const DESBLOQUEIO_S = 45;
 // andarM = metros a pé dentro da opção (usado para penalizar caminhadas longas)
 type Micro =
   | { tipo: 'caminhada'; t: number; andarM: number }
-  | { tipo: 'bike'; t: number; andarM: number; retirada: Estacao; devolucao: Estacao }
-  | { tipo: 'patinete'; t: number; andarM: number; patinete: Patinete };
+  | { tipo: 'bike'; t: number; andarM: number; microM: number; retirada: Estacao; devolucao: Estacao }
+  | { tipo: 'patinete'; t: number; andarM: number; microM: number; patinete: Patinete };
 
-/** Pessoas evitam caminhar muito: cada metro a pé além de 600 m "custa" 0,5 s a mais no ranking. */
-const penalidadeCaminhada = (m: Micro) => Math.max(0, m.andarM - 600) * 0.5;
+/**
+ * Penalidades de conforto usadas só no ranking:
+ * - pessoas evitam caminhar muito: cada metro a pé além de 600 m "custa" 0,5 s;
+ * - a última milha ideal é de 1 a 3 km: cada metro de bike/patinete além de 2 km "custa" 0,6 s
+ *   (assim o app não manda pedalar 3 km só para pegar o mesmo ônibus num terminal mais distante).
+ */
+const penalidadeCaminhada = (m: Micro) =>
+  Math.max(0, m.andarM - 600) * 0.5 + (m.tipo === 'caminhada' ? 0 : Math.max(0, m.microM - 2000) * 0.6);
 
 const andar = (a: LatLon, b: LatLon) => (dist(a, b) * DESVIO) / ms(V.caminhada);
 
@@ -47,7 +53,8 @@ function opcoesMicro(a: LatLon, b: LatLon, est: Estacao[], pats: Patinete[], per
   if (ret && dev && ret.e.id !== dev.e.id) {
     const t = andar(a, [ret.e.lat, ret.e.lon]) + DESBLOQUEIO_S +
       (dist([ret.e.lat, ret.e.lon], [dev.e.lat, dev.e.lon]) * DESVIO) / ms(V.bike) + andar([dev.e.lat, dev.e.lon], b);
-    out.push({ tipo: 'bike', t, andarM: (ret.d + dev.d) * DESVIO, retirada: ret.e, devolucao: dev.e });
+    const microM = dist([ret.e.lat, ret.e.lon], [dev.e.lat, dev.e.lon]) * DESVIO;
+    out.push({ tipo: 'bike', t, andarM: (ret.d + dev.d) * DESVIO, microM, retirada: ret.e, devolucao: dev.e });
   }
 
   const pat = pats.map((p) => ({ p, d: dist(a, [p.lat, p.lon]) }))
@@ -55,7 +62,7 @@ function opcoesMicro(a: LatLon, b: LatLon, est: Estacao[], pats: Patinete[], per
     .sort((x, y) => x.d - y.d)[0];
   if (pat) {
     const t = andar(a, [pat.p.lat, pat.p.lon]) + DESBLOQUEIO_S + (d * DESVIO) / ms(V.patinete);
-    out.push({ tipo: 'patinete', t, andarM: pat.d * DESVIO, patinete: pat.p });
+    out.push({ tipo: 'patinete', t, andarM: pat.d * DESVIO, microM: d * DESVIO, patinete: pat.p });
   }
   return out;
 }
@@ -154,10 +161,11 @@ export function planejar(deIn: Partial<Ponto>, paraIn: Partial<Ponto>) {
   add(unicos.find((c) => c.direto?.tipo === 'caminhada' && dOD <= 1200));
   for (const c of unicos) add(c);
 
+  // a melhor opção (menor custo: tempo + trocas + conforto) vem primeiro
   const opcoes = escolhidos
+    .sort((a, b) => a.score - b.score)
     .map((c, k) => materializar(c, de, para, agora, k))
-    .filter((x): x is NonNullable<typeof x> => !!x)
-    .sort((a, b) => a.chegadaMs - b.chegadaMs);
+    .filter((x): x is NonNullable<typeof x> => !!x);
 
   const avisos: string[] = [];
   if (!opcoes.length) avisos.push('Não encontramos opções para este trajeto. Tente um ponto mais próximo de uma linha de ônibus ou estação Ecobike.');

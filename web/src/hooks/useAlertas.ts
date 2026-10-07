@@ -29,9 +29,18 @@ export function useAlertas(opts: {
   const { it, aoVivo, agora, sim, terminais, notificar, replanejar } = opts;
   const disparados = useRef(new Set<string>());
 
+  // ao trocar de itinerário, os alertas voltam a valer, exceto os de estação (valem por estação, não por rota)
   useEffect(() => {
-    disparados.current = new Set();
+    disparados.current = new Set([...disparados.current].filter((k) => k.startsWith('vazia-') || k.startsWith('cheia-')));
   }, [it?.id]);
+
+  // estação reabastecida: o alerta pode disparar de novo no futuro
+  useEffect(() => {
+    for (const e of aoVivo?.estacoes ?? []) {
+      if (e.bikes > 0) disparados.current.delete(`vazia-${e.id}`);
+      if (e.vagas > 0) disparados.current.delete(`cheia-${e.id}`);
+    }
+  }, [aoVivo]);
 
   const uma = (chave: string, t: Omit<Toast, 'id'>) => {
     if (disparados.current.has(chave)) return;
@@ -51,6 +60,31 @@ export function useAlertas(opts: {
         titulo: `Seu ônibus ${eta.linha} chega em ${eta.min <= 0 ? 'menos de 1' : eta.min} min`,
         texto: `Embarque em ${eta.parada}.`,
       });
+    }
+
+    // Estação Ecobike dos terminais por onde a viagem passa (pontos de integração)
+    const patinetesPerto = (lat: number, lon: number) => aoVivo.patinetes
+      .map((p) => ({ p, d: distM([lat, lon], [p.lat, p.lon]) }))
+      .filter((x) => x.d <= 400 && x.p.bateria >= 25)
+      .sort((a, b) => a.d - b.d);
+    for (const term of terminais) {
+      const passa = it.trechos.some((t, idx) => (!sim.ativo || idx >= sim.trechoIdx) &&
+        t.geometria.some((p) => distM(p, [term.lat, term.lon]) <= 250));
+      if (!passa) continue;
+      const e = aoVivo.estacoes
+        .map((x) => ({ x, d: distM([term.lat, term.lon], [x.lat, x.lon]) }))
+        .filter((y) => y.d <= 300).sort((a, b) => a.d - b.d)[0]?.x;
+      if (e && e.bikes === 0) {
+        const pats = patinetesPerto(e.lat, e.lon);
+        uma(`vazia-${e.id}`, {
+          tipo: 'perigo',
+          titulo: `A estação Ecobike do ${term.nomeCurto} ficou vazia.`,
+          texto: pats.length
+            ? `Há ${pats.length} ${pats.length === 1 ? 'patinete' : 'patinetes'} a ${Math.round(pats[0].d / 10) * 10} m.`
+            : 'Não há patinetes por perto agora.',
+          acao: { rotulo: 'Replanejar', fn: replanejar },
+        });
+      }
     }
 
     it.trechos.forEach((t, idx) => {
