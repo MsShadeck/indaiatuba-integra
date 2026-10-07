@@ -101,7 +101,11 @@ for (const r of routes) {
     });
 
     const ultimo = typeof tracado[tracado.length - 1] === 'string' ? stopById.get(tracado[tracado.length - 1] as string)! : null;
-    const headsign = ultimo?.nome ?? r.longo;
+    // letreiro: nome curto do terminal; linhas circulares mostram o percurso
+    const headsign = r.circular ? 'Circular: Pompéia · Rodoviária · Bartolomai'
+      : ultimo?.id === central.id ? central.nomeCurto
+      : ultimo?.id === rodoviario.id ? rodoviario.nomeCurto
+      : ultimo?.nome ?? r.longo;
     // Serviço contínuo 24 h (simulação para a demo funcionar a qualquer hora).
     const inicio = (r.offsetMin + (dir === 1 ? r.headwayMin / 2 : 0)) * 60;
     for (let start = inicio; start < 24 * 3600; start += r.headwayMin * 60) {

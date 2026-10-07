@@ -143,246 +143,246 @@ route_id,service_id,trip_id,trip_headsign,direction_id,shape_id
 101,DIARIO,101_0_2330,Distrito Industrial Nova Era,0,101_0
 101,DIARIO,101_0_2340,Distrito Industrial Nova Era,0,101_0
 101,DIARIO,101_0_2350,Distrito Industrial Nova Era,0,101_0
-101,DIARIO,101_1_0005,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0015,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0025,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0035,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0045,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0055,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0105,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0115,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0125,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0135,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0145,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0155,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0205,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0215,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0225,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0235,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0245,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0255,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0305,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0315,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0325,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0335,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0345,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0355,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0405,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0415,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0425,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0435,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0445,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0455,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0505,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0515,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0525,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0535,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0545,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0555,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0605,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0615,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0625,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0635,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0645,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0655,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0705,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0715,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0725,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0735,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0745,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0755,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0805,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0815,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0825,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0835,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0845,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0855,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0905,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0915,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0925,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0935,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0945,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_0955,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1005,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1015,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1025,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1035,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1045,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1055,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1105,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1115,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1125,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1135,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1145,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1155,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1205,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1215,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1225,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1235,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1245,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1255,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1305,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1315,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1325,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1335,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1345,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1355,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1405,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1415,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1425,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1435,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1445,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1455,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1505,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1515,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1525,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1535,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1545,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1555,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1605,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1615,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1625,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1635,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1645,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1655,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1705,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1715,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1725,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1735,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1745,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1755,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1805,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1815,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1825,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1835,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1845,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1855,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1905,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1915,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1925,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1935,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1945,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_1955,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2005,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2015,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2025,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2035,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2045,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2055,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2105,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2115,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2125,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2135,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2145,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2155,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2205,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2215,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2225,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2235,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2245,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2255,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2305,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2315,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2325,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2335,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2345,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-101,DIARIO,101_1_2355,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,1,101_1
-102,DIARIO,102_0_0004,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0019,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0034,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0049,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0104,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0119,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0134,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0149,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0204,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0219,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0234,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0249,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0304,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0319,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0334,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0349,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0404,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0419,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0434,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0449,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0504,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0519,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0534,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0549,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0604,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0619,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0634,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0649,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0704,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0719,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0734,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0749,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0804,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0819,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0834,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0849,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0904,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0919,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0934,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_0949,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1004,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1019,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1034,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1049,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1104,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1119,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1134,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1149,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1204,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1219,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1234,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1249,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1304,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1319,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1334,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1349,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1404,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1419,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1434,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1449,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1504,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1519,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1534,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1549,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1604,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1619,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1634,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1649,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1704,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1719,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1734,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1749,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1804,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1819,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1834,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1849,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1904,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1919,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1934,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_1949,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2004,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2019,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2034,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2049,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2104,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2119,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2134,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2149,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2204,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2219,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2234,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2249,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2304,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2319,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2334,Terminal Rodoviário de Indaiatuba,0,102_0
-102,DIARIO,102_0_2349,Terminal Rodoviário de Indaiatuba,0,102_0
+101,DIARIO,101_1_0005,Terminal Central,1,101_1
+101,DIARIO,101_1_0015,Terminal Central,1,101_1
+101,DIARIO,101_1_0025,Terminal Central,1,101_1
+101,DIARIO,101_1_0035,Terminal Central,1,101_1
+101,DIARIO,101_1_0045,Terminal Central,1,101_1
+101,DIARIO,101_1_0055,Terminal Central,1,101_1
+101,DIARIO,101_1_0105,Terminal Central,1,101_1
+101,DIARIO,101_1_0115,Terminal Central,1,101_1
+101,DIARIO,101_1_0125,Terminal Central,1,101_1
+101,DIARIO,101_1_0135,Terminal Central,1,101_1
+101,DIARIO,101_1_0145,Terminal Central,1,101_1
+101,DIARIO,101_1_0155,Terminal Central,1,101_1
+101,DIARIO,101_1_0205,Terminal Central,1,101_1
+101,DIARIO,101_1_0215,Terminal Central,1,101_1
+101,DIARIO,101_1_0225,Terminal Central,1,101_1
+101,DIARIO,101_1_0235,Terminal Central,1,101_1
+101,DIARIO,101_1_0245,Terminal Central,1,101_1
+101,DIARIO,101_1_0255,Terminal Central,1,101_1
+101,DIARIO,101_1_0305,Terminal Central,1,101_1
+101,DIARIO,101_1_0315,Terminal Central,1,101_1
+101,DIARIO,101_1_0325,Terminal Central,1,101_1
+101,DIARIO,101_1_0335,Terminal Central,1,101_1
+101,DIARIO,101_1_0345,Terminal Central,1,101_1
+101,DIARIO,101_1_0355,Terminal Central,1,101_1
+101,DIARIO,101_1_0405,Terminal Central,1,101_1
+101,DIARIO,101_1_0415,Terminal Central,1,101_1
+101,DIARIO,101_1_0425,Terminal Central,1,101_1
+101,DIARIO,101_1_0435,Terminal Central,1,101_1
+101,DIARIO,101_1_0445,Terminal Central,1,101_1
+101,DIARIO,101_1_0455,Terminal Central,1,101_1
+101,DIARIO,101_1_0505,Terminal Central,1,101_1
+101,DIARIO,101_1_0515,Terminal Central,1,101_1
+101,DIARIO,101_1_0525,Terminal Central,1,101_1
+101,DIARIO,101_1_0535,Terminal Central,1,101_1
+101,DIARIO,101_1_0545,Terminal Central,1,101_1
+101,DIARIO,101_1_0555,Terminal Central,1,101_1
+101,DIARIO,101_1_0605,Terminal Central,1,101_1
+101,DIARIO,101_1_0615,Terminal Central,1,101_1
+101,DIARIO,101_1_0625,Terminal Central,1,101_1
+101,DIARIO,101_1_0635,Terminal Central,1,101_1
+101,DIARIO,101_1_0645,Terminal Central,1,101_1
+101,DIARIO,101_1_0655,Terminal Central,1,101_1
+101,DIARIO,101_1_0705,Terminal Central,1,101_1
+101,DIARIO,101_1_0715,Terminal Central,1,101_1
+101,DIARIO,101_1_0725,Terminal Central,1,101_1
+101,DIARIO,101_1_0735,Terminal Central,1,101_1
+101,DIARIO,101_1_0745,Terminal Central,1,101_1
+101,DIARIO,101_1_0755,Terminal Central,1,101_1
+101,DIARIO,101_1_0805,Terminal Central,1,101_1
+101,DIARIO,101_1_0815,Terminal Central,1,101_1
+101,DIARIO,101_1_0825,Terminal Central,1,101_1
+101,DIARIO,101_1_0835,Terminal Central,1,101_1
+101,DIARIO,101_1_0845,Terminal Central,1,101_1
+101,DIARIO,101_1_0855,Terminal Central,1,101_1
+101,DIARIO,101_1_0905,Terminal Central,1,101_1
+101,DIARIO,101_1_0915,Terminal Central,1,101_1
+101,DIARIO,101_1_0925,Terminal Central,1,101_1
+101,DIARIO,101_1_0935,Terminal Central,1,101_1
+101,DIARIO,101_1_0945,Terminal Central,1,101_1
+101,DIARIO,101_1_0955,Terminal Central,1,101_1
+101,DIARIO,101_1_1005,Terminal Central,1,101_1
+101,DIARIO,101_1_1015,Terminal Central,1,101_1
+101,DIARIO,101_1_1025,Terminal Central,1,101_1
+101,DIARIO,101_1_1035,Terminal Central,1,101_1
+101,DIARIO,101_1_1045,Terminal Central,1,101_1
+101,DIARIO,101_1_1055,Terminal Central,1,101_1
+101,DIARIO,101_1_1105,Terminal Central,1,101_1
+101,DIARIO,101_1_1115,Terminal Central,1,101_1
+101,DIARIO,101_1_1125,Terminal Central,1,101_1
+101,DIARIO,101_1_1135,Terminal Central,1,101_1
+101,DIARIO,101_1_1145,Terminal Central,1,101_1
+101,DIARIO,101_1_1155,Terminal Central,1,101_1
+101,DIARIO,101_1_1205,Terminal Central,1,101_1
+101,DIARIO,101_1_1215,Terminal Central,1,101_1
+101,DIARIO,101_1_1225,Terminal Central,1,101_1
+101,DIARIO,101_1_1235,Terminal Central,1,101_1
+101,DIARIO,101_1_1245,Terminal Central,1,101_1
+101,DIARIO,101_1_1255,Terminal Central,1,101_1
+101,DIARIO,101_1_1305,Terminal Central,1,101_1
+101,DIARIO,101_1_1315,Terminal Central,1,101_1
+101,DIARIO,101_1_1325,Terminal Central,1,101_1
+101,DIARIO,101_1_1335,Terminal Central,1,101_1
+101,DIARIO,101_1_1345,Terminal Central,1,101_1
+101,DIARIO,101_1_1355,Terminal Central,1,101_1
+101,DIARIO,101_1_1405,Terminal Central,1,101_1
+101,DIARIO,101_1_1415,Terminal Central,1,101_1
+101,DIARIO,101_1_1425,Terminal Central,1,101_1
+101,DIARIO,101_1_1435,Terminal Central,1,101_1
+101,DIARIO,101_1_1445,Terminal Central,1,101_1
+101,DIARIO,101_1_1455,Terminal Central,1,101_1
+101,DIARIO,101_1_1505,Terminal Central,1,101_1
+101,DIARIO,101_1_1515,Terminal Central,1,101_1
+101,DIARIO,101_1_1525,Terminal Central,1,101_1
+101,DIARIO,101_1_1535,Terminal Central,1,101_1
+101,DIARIO,101_1_1545,Terminal Central,1,101_1
+101,DIARIO,101_1_1555,Terminal Central,1,101_1
+101,DIARIO,101_1_1605,Terminal Central,1,101_1
+101,DIARIO,101_1_1615,Terminal Central,1,101_1
+101,DIARIO,101_1_1625,Terminal Central,1,101_1
+101,DIARIO,101_1_1635,Terminal Central,1,101_1
+101,DIARIO,101_1_1645,Terminal Central,1,101_1
+101,DIARIO,101_1_1655,Terminal Central,1,101_1
+101,DIARIO,101_1_1705,Terminal Central,1,101_1
+101,DIARIO,101_1_1715,Terminal Central,1,101_1
+101,DIARIO,101_1_1725,Terminal Central,1,101_1
+101,DIARIO,101_1_1735,Terminal Central,1,101_1
+101,DIARIO,101_1_1745,Terminal Central,1,101_1
+101,DIARIO,101_1_1755,Terminal Central,1,101_1
+101,DIARIO,101_1_1805,Terminal Central,1,101_1
+101,DIARIO,101_1_1815,Terminal Central,1,101_1
+101,DIARIO,101_1_1825,Terminal Central,1,101_1
+101,DIARIO,101_1_1835,Terminal Central,1,101_1
+101,DIARIO,101_1_1845,Terminal Central,1,101_1
+101,DIARIO,101_1_1855,Terminal Central,1,101_1
+101,DIARIO,101_1_1905,Terminal Central,1,101_1
+101,DIARIO,101_1_1915,Terminal Central,1,101_1
+101,DIARIO,101_1_1925,Terminal Central,1,101_1
+101,DIARIO,101_1_1935,Terminal Central,1,101_1
+101,DIARIO,101_1_1945,Terminal Central,1,101_1
+101,DIARIO,101_1_1955,Terminal Central,1,101_1
+101,DIARIO,101_1_2005,Terminal Central,1,101_1
+101,DIARIO,101_1_2015,Terminal Central,1,101_1
+101,DIARIO,101_1_2025,Terminal Central,1,101_1
+101,DIARIO,101_1_2035,Terminal Central,1,101_1
+101,DIARIO,101_1_2045,Terminal Central,1,101_1
+101,DIARIO,101_1_2055,Terminal Central,1,101_1
+101,DIARIO,101_1_2105,Terminal Central,1,101_1
+101,DIARIO,101_1_2115,Terminal Central,1,101_1
+101,DIARIO,101_1_2125,Terminal Central,1,101_1
+101,DIARIO,101_1_2135,Terminal Central,1,101_1
+101,DIARIO,101_1_2145,Terminal Central,1,101_1
+101,DIARIO,101_1_2155,Terminal Central,1,101_1
+101,DIARIO,101_1_2205,Terminal Central,1,101_1
+101,DIARIO,101_1_2215,Terminal Central,1,101_1
+101,DIARIO,101_1_2225,Terminal Central,1,101_1
+101,DIARIO,101_1_2235,Terminal Central,1,101_1
+101,DIARIO,101_1_2245,Terminal Central,1,101_1
+101,DIARIO,101_1_2255,Terminal Central,1,101_1
+101,DIARIO,101_1_2305,Terminal Central,1,101_1
+101,DIARIO,101_1_2315,Terminal Central,1,101_1
+101,DIARIO,101_1_2325,Terminal Central,1,101_1
+101,DIARIO,101_1_2335,Terminal Central,1,101_1
+101,DIARIO,101_1_2345,Terminal Central,1,101_1
+101,DIARIO,101_1_2355,Terminal Central,1,101_1
+102,DIARIO,102_0_0004,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0019,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0034,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0049,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0104,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0119,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0134,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0149,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0204,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0219,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0234,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0249,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0304,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0319,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0334,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0349,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0404,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0419,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0434,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0449,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0504,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0519,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0534,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0549,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0604,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0619,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0634,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0649,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0704,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0719,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0734,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0749,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0804,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0819,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0834,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0849,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0904,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0919,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0934,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_0949,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1004,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1019,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1034,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1049,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1104,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1119,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1134,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1149,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1204,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1219,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1234,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1249,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1304,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1319,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1334,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1349,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1404,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1419,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1434,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1449,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1504,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1519,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1534,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1549,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1604,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1619,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1634,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1649,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1704,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1719,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1734,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1749,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1804,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1819,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1834,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1849,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1904,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1919,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1934,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_1949,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2004,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2019,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2034,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2049,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2104,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2119,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2134,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2149,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2204,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2219,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2234,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2249,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2304,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2319,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2334,Terminal Rodoviário,0,102_0
+102,DIARIO,102_0_2349,Terminal Rodoviário,0,102_0
 102,DIARIO,102_1_0011,Jd. Morada do Sol – Ponto Final,1,102_1
 102,DIARIO,102_1_0026,Jd. Morada do Sol – Ponto Final,1,102_1
 102,DIARIO,102_1_0041,Jd. Morada do Sol – Ponto Final,1,102_1
@@ -623,123 +623,123 @@ route_id,service_id,trip_id,trip_headsign,direction_id,shape_id
 103,DIARIO,103_1_2317,Jd. Morumbi,1,103_1
 103,DIARIO,103_1_2337,Jd. Morumbi,1,103_1
 103,DIARIO,103_1_2357,Jd. Morumbi,1,103_1
-104,DIARIO,104_0_0002,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0014,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0026,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0038,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0050,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0102,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0114,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0126,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0138,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0150,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0202,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0214,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0226,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0238,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0250,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0302,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0314,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0326,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0338,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0350,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0402,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0414,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0426,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0438,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0450,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0502,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0514,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0526,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0538,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0550,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0602,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0614,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0626,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0638,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0650,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0702,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0714,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0726,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0738,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0750,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0802,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0814,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0826,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0838,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0850,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0902,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0914,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0926,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0938,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_0950,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1002,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1014,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1026,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1038,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1050,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1102,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1114,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1126,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1138,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1150,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1202,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1214,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1226,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1238,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1250,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1302,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1314,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1326,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1338,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1350,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1402,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1414,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1426,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1438,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1450,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1502,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1514,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1526,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1538,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1550,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1602,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1614,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1626,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1638,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1650,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1702,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1714,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1726,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1738,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1750,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1802,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1814,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1826,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1838,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1850,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1902,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1914,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1926,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1938,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_1950,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2002,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2014,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2026,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2038,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2050,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2102,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2114,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2126,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2138,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2150,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2202,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2214,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2226,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2238,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2250,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2302,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2314,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2326,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2338,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
-104,DIARIO,104_0_2350,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,0,104_0
+104,DIARIO,104_0_0002,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0014,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0026,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0038,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0050,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0102,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0114,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0126,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0138,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0150,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0202,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0214,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0226,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0238,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0250,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0302,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0314,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0326,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0338,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0350,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0402,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0414,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0426,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0438,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0450,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0502,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0514,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0526,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0538,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0550,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0602,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0614,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0626,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0638,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0650,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0702,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0714,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0726,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0738,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0750,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0802,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0814,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0826,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0838,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0850,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0902,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0914,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0926,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0938,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_0950,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1002,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1014,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1026,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1038,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1050,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1102,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1114,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1126,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1138,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1150,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1202,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1214,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1226,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1238,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1250,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1302,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1314,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1326,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1338,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1350,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1402,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1414,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1426,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1438,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1450,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1502,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1514,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1526,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1538,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1550,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1602,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1614,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1626,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1638,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1650,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1702,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1714,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1726,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1738,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1750,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1802,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1814,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1826,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1838,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1850,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1902,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1914,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1926,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1938,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_1950,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2002,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2014,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2026,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2038,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2050,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2102,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2114,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2126,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2138,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2150,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2202,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2214,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2226,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2238,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2250,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2302,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2314,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2326,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2338,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
+104,DIARIO,104_0_2350,Circular: Pompéia · Rodoviária · Bartolomai,0,104_0
