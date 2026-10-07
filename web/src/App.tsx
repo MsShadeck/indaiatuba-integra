@@ -7,11 +7,13 @@ import DetalheViagem from './components/DetalheViagem';
 import Mapa, { type Camadas } from './components/Mapa';
 import PainelCamadas from './components/PainelCamadas';
 import PainelDemo from './components/PainelDemo';
+import PainelImpacto from './components/PainelImpacto';
+import { registrarViagem } from './impacto';
 import Toasts from './components/Toasts';
 import { useAlertas, type Toast } from './hooks/useAlertas';
 import { useAgora, useAoVivo } from './hooks/useAoVivo';
 import { useSimulacao } from './hooks/useSimulacao';
-import { IcAlvo, IcCamadas, IcTrocar, IcVaritaDemo } from './icones';
+import { IcAlvo, IcCamadas, IcFolha, IcTrocar, IcVaritaDemo } from './icones';
 import { kg } from './util';
 import type { Config, Itinerario, Lugar, Rede } from './tipos';
 
@@ -32,6 +34,7 @@ export default function App() {
   const [erro, setErro] = useState<string | null>(null);
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [verDemo, setVerDemo] = useState(false);
+  const [verImpacto, setVerImpacto] = useState(false);
 
   const { dados, conectado } = useAoVivo();
   const agora = useAgora(1000);
@@ -53,11 +56,13 @@ export default function App() {
 
   const notificar = useCallback((t: Toast) => setToasts((ts) => [...ts, t]), []);
   const aoConcluir = useCallback((it: Itinerario) => {
+    registrarViagem(it, de?.nome ?? 'Origem', para?.nome ?? 'Destino');
     notificar({
       id: `fim-${Date.now()}`, tipo: 'ok', titulo: 'Você chegou! Viagem concluída.',
-      texto: `Você evitou ${kg(it.co2.evitadoKg)} de CO₂ em relação ao carro.`,
+      texto: `Você evitou ${kg(it.co2.evitadoKg)} de CO₂ em relação ao carro. Veja "Meu impacto".`,
+      acao: { rotulo: 'Meu impacto', fn: () => setVerImpacto(true) },
     });
-  }, [notificar]);
+  }, [notificar, de?.nome, para?.nome]);
   const simulacao = useSimulacao(selecionado, aoConcluir);
   const { sim } = simulacao;
 
@@ -122,6 +127,9 @@ export default function App() {
           <img src="/favicon.svg" alt="" />
           <div>Indaiatuba Integra<small className={`status-vivo ${conectado ? '' : 'off'}`}>{conectado ? 'ao vivo' : 'reconectando…'}</small></div>
         </div>
+        <button className="btn-topo" onClick={() => setVerImpacto(true)} aria-label="Meu impacto">
+          <IcFolha /><span className="rotulo">Meu impacto</span>
+        </button>
         <button className="btn-topo" onClick={() => setVerDemo(true)} aria-label="Modo apresentação">
           <IcVaritaDemo /><span className="rotulo">Demo</span>
         </button>
@@ -131,6 +139,7 @@ export default function App() {
       </header>
       {verCamadas && <PainelCamadas camadas={camadas} onChange={setCamadas} onFechar={() => setVerCamadas(false)} />}
       <Toasts itens={toasts} onFechar={(id) => setToasts((ts) => ts.filter((t) => t.id !== id))} />
+      {verImpacto && <PainelImpacto config={config} itinerario={selecionado} onFechar={() => setVerImpacto(false)} />}
       {verDemo && (
         <PainelDemo it={selecionado} onFechar={() => setVerDemo(false)} onErro={setErro}
           onSimular={() => { simulacao.iniciar(); setRecolhido(true); }} />

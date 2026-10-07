@@ -23,17 +23,21 @@ const DESVIO = 1.3; // fator para estimar distância real a partir da linha reta
 const DESBLOQUEIO_S = 45;
 
 // ---------- Opções de micromobilidade/caminhada entre dois pontos ----------
+// andarM = metros a pé dentro da opção (usado para penalizar caminhadas longas)
 type Micro =
-  | { tipo: 'caminhada'; t: number }
-  | { tipo: 'bike'; t: number; retirada: Estacao; devolucao: Estacao }
-  | { tipo: 'patinete'; t: number; patinete: Patinete };
+  | { tipo: 'caminhada'; t: number; andarM: number }
+  | { tipo: 'bike'; t: number; andarM: number; retirada: Estacao; devolucao: Estacao }
+  | { tipo: 'patinete'; t: number; andarM: number; patinete: Patinete };
+
+/** Pessoas evitam caminhar muito: cada metro a pé além de 600 m "custa" 0,5 s a mais no ranking. */
+const penalidadeCaminhada = (m: Micro) => Math.max(0, m.andarM - 600) * 0.5;
 
 const andar = (a: LatLon, b: LatLon) => (dist(a, b) * DESVIO) / ms(V.caminhada);
 
 function opcoesMicro(a: LatLon, b: LatLon, est: Estacao[], pats: Patinete[], permitirCaminhada = true): Micro[] {
   const d = dist(a, b);
   const out: Micro[] = [];
-  if (permitirCaminhada && d <= P.raioCaminhadaMaxM) out.push({ tipo: 'caminhada', t: andar(a, b) });
+  if (permitirCaminhada && d <= P.raioCaminhadaMaxM) out.push({ tipo: 'caminhada', t: andar(a, b), andarM: d * DESVIO });
   if (d < 500) return out; // trecho curto: só caminhada
 
   const ret = est.filter((e) => e.bikes > 0).map((e) => ({ e, d: dist(a, [e.lat, e.lon]) }))
@@ -43,7 +47,7 @@ function opcoesMicro(a: LatLon, b: LatLon, est: Estacao[], pats: Patinete[], per
   if (ret && dev && ret.e.id !== dev.e.id) {
     const t = andar(a, [ret.e.lat, ret.e.lon]) + DESBLOQUEIO_S +
       (dist([ret.e.lat, ret.e.lon], [dev.e.lat, dev.e.lon]) * DESVIO) / ms(V.bike) + andar([dev.e.lat, dev.e.lon], b);
-    out.push({ tipo: 'bike', t, retirada: ret.e, devolucao: dev.e });
+    out.push({ tipo: 'bike', t, andarM: (ret.d + dev.d) * DESVIO, retirada: ret.e, devolucao: dev.e });
   }
 
   const pat = pats.map((p) => ({ p, d: dist(a, [p.lat, p.lon]) }))
@@ -51,7 +55,7 @@ function opcoesMicro(a: LatLon, b: LatLon, est: Estacao[], pats: Patinete[], per
     .sort((x, y) => x.d - y.d)[0];
   if (pat) {
     const t = andar(a, [pat.p.lat, pat.p.lon]) + DESBLOQUEIO_S + (d * DESVIO) / ms(V.patinete);
-    out.push({ tipo: 'patinete', t, patinete: pat.p });
+    out.push({ tipo: 'patinete', t, andarM: pat.d * DESVIO, patinete: pat.p });
   }
   return out;
 }
@@ -87,7 +91,7 @@ export function planejar(deIn: Partial<Ponto>, paraIn: Partial<Ponto>) {
   // Só micromobilidade / caminhada (distâncias curtas)
   if (dOD <= P.distanciaMaxSoMicroM) {
     for (const m of opcoesMicro(O, D, est, pats, dOD <= P.raioCaminhadaMaxM)) {
-      candidatos.push({ assinatura: `direto-${m.tipo}`, chegadaMs: agora + m.t * 1000, score: m.t, direto: m });
+      candidatos.push({ assinatura: `direto-${m.tipo}`, chegadaMs: agora + m.t * 1000, score: m.t + penalidadeCaminhada(m), direto: m });
     }
   }
 
@@ -126,7 +130,7 @@ export function planejar(deIn: Partial<Ponto>, paraIn: Partial<Ponto>) {
             candidatos.push({
               assinatura: `${a.tipo}>${p.routeId}>${e.tipo}`,
               chegadaMs: chegada,
-              score: (chegada - agora) / 1000 + 90 * trocas,
+              score: (chegada - agora) / 1000 + 90 * trocas + penalidadeCaminhada(a) + penalidadeCaminhada(e),
               acesso: a, egresso: e, onibus: { pattern: p, i, j, partida },
             });
           }
