@@ -1,8 +1,8 @@
 // Simulador GBFS: estações Ecobike (station_information + station_status)
 // e patinetes elétricos soltos (vehicle_status, GBFS v3 / free_bike_status v2).
 // Para usar dados reais, troque as funções abaixo pela leitura do feed GBFS do operador.
-import { config, stationInformation } from './dados';
-import { dist, offset, rng, type LatLon } from './geo';
+import { config, stationInformation } from './dados.js';
+import { dist, offset, rng, type LatLon } from './geo.js';
 
 export interface Estacao {
   id: string; nome: string; lat: number; lon: number; capacidade: number; bikes: number; vagas: number;

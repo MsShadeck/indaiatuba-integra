@@ -3,7 +3,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-export const DATA_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../data');
+// Na Vercel o código roda empacotado; por isso também procura server/data a partir do diretório atual.
+export const DATA_DIR = [
+  process.env.DATA_DIR,
+  path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../data'),
+  path.resolve(process.cwd(), 'server/data'),
+  path.resolve(process.cwd(), 'data'),
+].find((d): d is string => !!d && fs.existsSync(path.join(d, 'config.json')))!;
 
 const lerJson = <T = any>(arquivo: string): T => JSON.parse(fs.readFileSync(path.join(DATA_DIR, arquivo), 'utf8'));
 

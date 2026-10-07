@@ -7,8 +7,8 @@
 // O custo de cada aresta = comprimento × fator do tipo de via, de acordo com o perfil.
 // Para produção: troque a malha sintética pelo viário do OpenStreetMap (ex.: extrato .osm.pbf
 // filtrado por highway=*), mantendo a mesma classificação de infraestrutura.
-import { ciclovias, config } from './dados';
-import { densify, dist, type LatLon } from './geo';
+import { ciclovias, config } from './dados.js';
+import { densify, dist, type LatLon } from './geo.js';
 
 export type Infra = 'ciclovia' | 'ciclofaixa' | 'compartilhada' | 'sem';
 export type Perfil = 'caminhada' | 'micro';

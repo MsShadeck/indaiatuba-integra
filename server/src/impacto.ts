@@ -1,6 +1,6 @@
 // Histórico MOCKADO de viagens do mês para o painel "Meu impacto".
-import { emissoes } from './dados';
-import { rng } from './geo';
+import { emissoes } from './dados.js';
+import { rng } from './geo.js';
 
 export function impactoMockado() {
   const r = rng(7);

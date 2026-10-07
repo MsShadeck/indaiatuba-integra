@@ -1,7 +1,7 @@
 // Busca de endereços: lista local (offline) + Nominatim/OpenStreetMap.
 // A chamada ao Nominatim passa pelo servidor porque navegadores não deixam
 // definir o header User-Agent, exigido pela política de uso do Nominatim.
-import { config, lugares } from './dados';
+import { config, lugares } from './dados.js';
 
 // Política do Nominatim: identifique a aplicação. Defina NOMINATIM_UA com um contato real
 // da equipe (ex.: "IndaiatubaIntegra/0.1 (equipe@seudominio.com.br)"). E-mails de exemplo são bloqueados.

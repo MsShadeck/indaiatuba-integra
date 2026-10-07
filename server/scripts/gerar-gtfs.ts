@@ -7,7 +7,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { cumulative, type LatLon } from '../src/geo';
+import { cumulative, type LatLon } from '../src/geo.js';
 
 const DATA = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../data');
 const OUT = path.join(DATA, 'gtfs');

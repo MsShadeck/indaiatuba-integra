@@ -2,6 +2,7 @@
   "name": "indaiatuba-integra",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "Indaiatuba Integra – protótipo de jornada integrada (MaaS) para a última milha",
   "workspaces": [
     "server",

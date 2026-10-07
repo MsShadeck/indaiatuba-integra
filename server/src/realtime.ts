@@ -2,8 +2,8 @@
 // seguindo o horário programado (stop_times) mais um atraso aleatório pequeno.
 // Num cenário real, este módulo seria substituído pela leitura do feed GTFS-RT
 // (VehiclePositions + TripUpdates) da operadora.
-import { bearing, pointAlong } from './geo';
-import { patterns, routes, shapes, stops, trips, type Trip } from './gtfs';
+import { bearing, pointAlong } from './geo.js';
+import { patterns, routes, shapes, stops, trips, type Trip } from './gtfs.js';
 
 const DIA = 86400;
 

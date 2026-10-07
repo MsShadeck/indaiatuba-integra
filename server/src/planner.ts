@@ -6,12 +6,12 @@
 //    ônibus REAL do simulador (horário programado + atraso atual).
 // 3. Escolhe até 3 opções diferentes e as "materializa" com o roteamento no grafo
 //    (ciclovias priorizadas), horários definitivos, disponibilidade e CO₂.
-import { config, emissoes, terminais } from './dados';
-import { estacoes, listaPatinetes, type Estacao, type Patinete } from './gbfs';
-import { dist, slice, type LatLon } from './geo';
-import { patterns, routes, shapes, stops, trips, type Pattern } from './gtfs';
-import { rotear, type Segmento } from './grafo';
-import { chegadaPrevista, proximasPartidas, type Partida } from './realtime';
+import { config, emissoes, terminais } from './dados.js';
+import { estacoes, listaPatinetes, type Estacao, type Patinete } from './gbfs.js';
+import { dist, slice, type LatLon } from './geo.js';
+import { patterns, routes, shapes, stops, trips, type Pattern } from './gtfs.js';
+import { rotear, type Segmento } from './grafo.js';
+import { chegadaPrevista, proximasPartidas, type Partida } from './realtime.js';
 
 type Modo = 'caminhada' | 'bike' | 'patinete' | 'onibus';
 interface Ponto { nome: string; lat: number; lon: number }

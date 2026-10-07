@@ -3,8 +3,8 @@
 // (ou apontar GTFS_DIR para outra pasta) – o formato é o padrão GTFS.
 import fs from 'node:fs';
 import path from 'node:path';
-import { DATA_DIR } from './dados';
-import { cumulative, type LatLon } from './geo';
+import { DATA_DIR } from './dados.js';
+import { cumulative, type LatLon } from './geo.js';
 
 const GTFS_DIR = process.env.GTFS_DIR ?? path.join(DATA_DIR, 'gtfs');
 
