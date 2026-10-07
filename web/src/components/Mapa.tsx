@@ -46,7 +46,16 @@ function AjustarZoom({ itinerario, de, para }: { itinerario: Itinerario | null; 
       ? itinerario.trechos.flatMap((t) => t.geometria)
       : [de, para].filter(Boolean).map((p) => [p!.lat, p!.lon] as LatLon);
     if (pts.length === 1) map.flyTo(pts[0], 15, { duration: 0.6 });
-    else if (pts.length > 1) map.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 16 });
+    else if (pts.length > 1) {
+      // desconta o painel: lateral no desktop, "bottom sheet" no celular
+      const { x, y } = map.getSize();
+      const largo = x >= 900;
+      map.fitBounds(L.latLngBounds(pts), {
+        paddingTopLeft: largo ? [450, 90] : [24, 84],
+        paddingBottomRight: largo ? [40, 40] : [24, Math.round(y * 0.64) + 12],
+        maxZoom: 16,
+      });
+    }
   }, [itinerario?.id, de?.lat, de?.lon, para?.lat, para?.lon]); // eslint-disable-line react-hooks/exhaustive-deps
   return null;
 }

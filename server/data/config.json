@@ -40,7 +40,7 @@
     "onibusMedia": 20
   },
   "planejador": {
-    "raioCaminhadaMaxM": 1500,
+    "raioCaminhadaMaxM": 2000,
     "raioAcessoMaxM": 3500,
     "raioEstacaoM": 500,
     "raioPatineteM": 500,

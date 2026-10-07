@@ -47,7 +47,8 @@ export interface Veiculo {
 
 function posicaoDaViagem(t: Trip, tempo: number) {
   const st = t.stopTimes;
-  if (tempo < st[0].dep - 60 || tempo > st[st.length - 1].arr + 30) return null;
+  // o ônibus aparece parado no ponto inicial até 10 min antes da partida (aguardando no terminal)
+  if (tempo < st[0].dep - 600 || tempo > st[st.length - 1].arr + 30) return null;
   const sh = shapes.get(t.shapeId)!;
   let d = st[0].dist;
   let prox = 0;
@@ -83,7 +84,7 @@ export function atualizarVeiculos(agora = Date.now()): Veiculo[] {
       // considera também viagens de "ontem" que passam da meia-noite (horários > 24:00)
       for (const base of [s, s + DIA]) {
         const ini = t.stopTimes[0].dep, fim = t.stopTimes[t.stopTimes.length - 1].arr;
-        if (base < ini - 120 || base > fim + 400) continue;
+        if (base < ini - 900 || base > fim + 400) continue;
         let atraso = atrasos.get(t.id);
         if (atraso === undefined) atraso = Math.round(rand() * 150 - 20); // -20 s a +130 s
         // passeio aleatório pequeno, limitado a [-60 s, +300 s]
