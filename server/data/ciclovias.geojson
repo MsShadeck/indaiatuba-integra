@@ -1,0 +1,18 @@
+{
+  "type": "FeatureCollection",
+  "_aviso": "DADOS DE EXEMPLO – traçados ilustrativos inspirados no programa Indaiatuba by Bike. Substitua pelo GeoJSON oficial da malha cicloviária (ex.: exportação do OpenStreetMap com highway=cycleway ou cycleway=lane).",
+  "features": [
+    { "type": "Feature", "properties": { "nome": "Ciclovia do Parque Ecológico", "tipo": "ciclovia", "fonte": "dados de exemplo" },
+      "geometry": { "type": "LineString", "coordinates": [[-47.2400,-23.0760],[-47.2330,-23.0830],[-47.2290,-23.0900],[-47.2250,-23.0960],[-47.2320,-23.1040],[-47.2390,-23.1120],[-47.2440,-23.1180]] } },
+    { "type": "Feature", "properties": { "nome": "Ciclofaixa Terminal Rodoviário – Terminal Central", "tipo": "ciclofaixa", "fonte": "dados de exemplo" },
+      "geometry": { "type": "LineString", "coordinates": [[-47.2250,-23.0960],[-47.2235,-23.0965],[-47.2195,-23.0935],[-47.2155,-23.0905]] } },
+    { "type": "Feature", "properties": { "nome": "Ciclofaixa Centro – Cidade Nova", "tipo": "ciclofaixa", "fonte": "dados de exemplo" },
+      "geometry": { "type": "LineString", "coordinates": [[-47.2155,-23.0905],[-47.2120,-23.0860],[-47.2075,-23.0815],[-47.2030,-23.0790]] } },
+    { "type": "Feature", "properties": { "nome": "Ciclovia Cidade Nova – Distrito Industrial", "tipo": "ciclovia", "fonte": "dados de exemplo" },
+      "geometry": { "type": "LineString", "coordinates": [[-47.2030,-23.0790],[-47.1985,-23.0760],[-47.1945,-23.0730],[-47.1905,-23.0700]] } },
+    { "type": "Feature", "properties": { "nome": "Ciclofaixa Jardim América – Terminal Central", "tipo": "ciclofaixa", "fonte": "dados de exemplo" },
+      "geometry": { "type": "LineString", "coordinates": [[-47.2085,-23.1045],[-47.2110,-23.1000],[-47.2135,-23.0950],[-47.2155,-23.0905]] } },
+    { "type": "Feature", "properties": { "nome": "Ciclovia Polo Empresarial Sul", "tipo": "ciclovia", "fonte": "dados de exemplo" },
+      "geometry": { "type": "LineString", "coordinates": [[-47.2135,-23.0950],[-47.2100,-23.0955],[-47.2040,-23.0975],[-47.1980,-23.1000],[-47.1900,-23.1060]] } }
+  ]
+}

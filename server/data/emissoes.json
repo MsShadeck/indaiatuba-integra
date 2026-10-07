@@ -1,0 +1,16 @@
+{
+  "_comentario": "Valores de REFERÊNCIA APROXIMADOS, apenas para o protótipo. Ajuste com fontes oficiais (ex.: CETESB, MCTI/SIRENE, Programa Brasileiro GHG Protocol) antes de qualquer uso público.",
+  "unidade": "kg CO2 por km (por passageiro)",
+  "fatoresKgPorKm": {
+    "carro": 0.12,
+    "onibus": 0.03,
+    "bike": 0,
+    "caminhada": 0,
+    "patinete": 0.005
+  },
+  "fatorDesvioCarro": 1.3,
+  "equivalencias": {
+    "_comentario": "Uma árvore adulta absorve algo como 15 a 25 kg de CO2 por ano (varia muito por espécie e idade). Usamos 22 kg/ano como referência.",
+    "kgCo2PorArvoreAno": 22
+  }
+}

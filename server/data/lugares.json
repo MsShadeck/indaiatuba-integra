@@ -1,0 +1,21 @@
+{
+  "_aviso": "Lista local de lugares (fallback offline da busca). Coordenadas aproximadas; itens do tipo exemplo são fictícios para a demo.",
+  "lugares": [
+    { "id": "casa-demo", "nome": "Casa (exemplo) – Jardim América", "lat": -23.1040, "lon": -47.2080, "tipo": "exemplo" },
+    { "id": "fabrica-demo", "nome": "Fábrica (exemplo) – Distrito Industrial", "lat": -23.0625, "lon": -47.1795, "tipo": "exemplo" },
+    { "id": "TC", "nome": "Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola", "lat": -23.0905, "lon": -47.2155, "tipo": "terminal" },
+    { "id": "TR", "nome": "Terminal Rodoviário de Indaiatuba", "lat": -23.0965, "lon": -47.2235, "tipo": "terminal" },
+    { "id": "centro", "nome": "Centro – Praça Prudente de Moraes", "lat": -23.0893, "lon": -47.2181, "tipo": "bairro" },
+    { "id": "parque-ecologico", "nome": "Parque Ecológico", "lat": -23.0905, "lon": -47.2290, "tipo": "lazer" },
+    { "id": "shopping", "nome": "Shopping (região)", "lat": -23.0815, "lon": -47.2135, "tipo": "comercio" },
+    { "id": "cidade-nova", "nome": "Cidade Nova", "lat": -23.0790, "lon": -47.2030, "tipo": "bairro" },
+    { "id": "distrito-industrial", "nome": "Distrito Industrial", "lat": -23.0680, "lon": -47.1880, "tipo": "emprego" },
+    { "id": "polo-sul", "nome": "Polo Empresarial Sul (exemplo)", "lat": -23.1060, "lon": -47.1900, "tipo": "emprego" },
+    { "id": "morada-do-sol", "nome": "Jardim Morada do Sol", "lat": -23.1185, "lon": -47.2440, "tipo": "bairro" },
+    { "id": "pau-preto", "nome": "Jardim Pau Preto", "lat": -23.1040, "lon": -47.2300, "tipo": "bairro" },
+    { "id": "jd-california", "nome": "Jardim Califórnia", "lat": -23.0960, "lon": -47.2450, "tipo": "bairro" },
+    { "id": "jd-regina", "nome": "Jardim Regina", "lat": -23.0760, "lon": -47.2380, "tipo": "bairro" },
+    { "id": "jd-america", "nome": "Jardim América", "lat": -23.1030, "lon": -47.2100, "tipo": "bairro" },
+    { "id": "hospital", "nome": "Hospital (região central)", "lat": -23.0950, "lon": -47.2100, "tipo": "saude" }
+  ]
+}

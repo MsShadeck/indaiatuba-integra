@@ -1,0 +1,2 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_lang
+SIM,Operadora Simulada (dados fictícios),https://example.org,America/Sao_Paulo,pt

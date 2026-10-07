@@ -1,0 +1,45 @@
+{
+  "_aviso": "ATENÇÃO: coordenadas APROXIMADAS, digitadas para o protótipo. Confira cada ponto no mapa (ex.: openstreetmap.org, clique com o botão direito > Mostrar endereço) e corrija aqui antes da apresentação. Depois de editar os terminais, rode npm run gerar-gtfs para regenerar o GTFS de exemplo.",
+  "cidade": "Indaiatuba - SP",
+  "centroMapa": { "lat": -23.09, "lon": -47.218, "zoom": 14 },
+  "limitesBusca": { "oeste": -47.30, "norte": -23.03, "leste": -47.13, "sul": -23.16 },
+  "terminais": {
+    "central": {
+      "id": "TC",
+      "nome": "Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola",
+      "nomeCurto": "Terminal Central",
+      "lat": -23.0905,
+      "lon": -47.2155,
+      "raioAreaM": 120,
+      "_conferir": "posição aproximada – conferir no mapa"
+    },
+    "rodoviario": {
+      "id": "TR",
+      "nome": "Terminal Rodoviário de Indaiatuba",
+      "nomeCurto": "Terminal Rodoviário",
+      "lat": -23.0965,
+      "lon": -47.2235,
+      "raioAreaM": 120,
+      "_conferir": "posição aproximada – conferir no mapa"
+    }
+  },
+  "velocidadesKmh": {
+    "caminhada": 5,
+    "bike": 15,
+    "patinete": 15,
+    "patineteAreaTerminal": 6,
+    "onibusMedia": 20
+  },
+  "planejador": {
+    "raioCaminhadaMaxM": 1500,
+    "raioAcessoMaxM": 3500,
+    "raioEstacaoM": 500,
+    "raioPatineteM": 500,
+    "bateriaMinimaPatinete": 25,
+    "distanciaMaxSoMicroM": 4500,
+    "folgaEmbarqueS": 60
+  },
+  "zonasIndustriais": [
+    { "nome": "Distrito Industrial (exemplo)", "lat": -23.067, "lon": -47.185, "raioM": 900 }
+  ]
+}

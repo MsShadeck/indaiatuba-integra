@@ -1,0 +1,5 @@
+route_id,agency_id,route_short_name,route_long_name,route_type,route_color,route_text_color
+101,SIM,101,Morada do Sol ↔ Distrito Industrial,3,1D4ED8,FFFFFF
+102,SIM,102,Jd. Califórnia ↔ Polo Empresarial Sul,3,B45309,FFFFFF
+103,SIM,103,Jd. Regina ↔ Distrito Industrial (via Parque Ecológico),3,BE185D,FFFFFF
+104,SIM,104,Circular Centro (Rodoviário → Centro → Central → Hospital),3,0E7490,FFFFFF
