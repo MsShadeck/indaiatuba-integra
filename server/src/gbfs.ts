@@ -15,7 +15,7 @@ const info: { station_id: string; name: string; lat: number; lon: number; capaci
   stationInformation.data.stations;
 
 // Ocupação inicial pensada para a demo (o restante é aleatório).
-const inicial: Record<string, number> = { 'eco-tc': 4, 'eco-jdamerica': 5, 'eco-di': 3, 'eco-tr': 6 };
+const inicial: Record<string, number> = { 'eco-tc': 4, 'eco-esplendor': 5, 'eco-di': 3, 'eco-tr': 6, 'eco-giomi': 2 };
 
 let bikes = new Map<string, number>();
 let patinetes: Patinete[] = [];
@@ -32,15 +32,14 @@ function semear() {
     // 2 patinetes a ~100 m dos terminais e do distrito (garantem o alerta da demo)
     { c: [config.terminais.central.lat, config.terminais.central.lon], n: 3, raio: 140 },
     { c: [config.terminais.rodoviario.lat, config.terminais.rodoviario.lon], n: 2, raio: 140 },
-    { c: [-23.0684, -47.1876], n: 3, raio: 140 }, // Distrito Industrial
-    { c: [-23.0730, -47.1945], n: 2, raio: 250 },
-    { c: [-23.0815, -47.2135], n: 2, raio: 300 }, // shopping
-    { c: [-23.0893, -47.2181], n: 3, raio: 350 }, // centro
-    { c: [-23.0790, -47.2030], n: 2, raio: 350 },
-    { c: [-23.1040, -47.2080], n: 1, raio: 300 }, // jardim américa
-    { c: [-23.1060, -47.1900], n: 2, raio: 350 },
-    { c: [-23.1125, -47.2375], n: 2, raio: 500 },
-    { c: [-23.0905, -47.2290], n: 2, raio: 300 },
+    { c: [-23.1369, -47.2284], n: 3, raio: 130 }, // Distrito Industrial Nova Era
+    { c: [-23.1316, -47.2321], n: 2, raio: 200 }, // Domingos Giomi
+    { c: [-23.0893, -47.2150], n: 3, raio: 300 }, // centro
+    { c: [-23.0810, -47.2050], n: 2, raio: 300 }, // cidade nova
+    { c: [-23.0870, -47.1930], n: 1, raio: 300 }, // jardim esplendor
+    { c: [-23.1057, -47.2040], n: 2, raio: 250 }, // bartolomai
+    { c: [-23.1200, -47.2400], n: 2, raio: 400 }, // morada do sol
+    { c: [-23.1043, -47.2281], n: 2, raio: 250 }, // parque ecológico
   ];
   patinetes = [];
   let n = 1;

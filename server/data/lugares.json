@@ -1,21 +1,22 @@
 {
   "_aviso": "Lista local de lugares (fallback offline da busca). Coordenadas aproximadas; itens do tipo exemplo são fictícios para a demo.",
   "lugares": [
-    { "id": "casa-demo", "nome": "Casa (exemplo) – Jardim América", "lat": -23.1040, "lon": -47.2080, "tipo": "exemplo" },
-    { "id": "fabrica-demo", "nome": "Fábrica (exemplo) – Distrito Industrial", "lat": -23.0625, "lon": -47.1795, "tipo": "exemplo" },
-    { "id": "TC", "nome": "Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola", "lat": -23.0905, "lon": -47.2155, "tipo": "terminal" },
-    { "id": "TR", "nome": "Terminal Rodoviário de Indaiatuba", "lat": -23.0965, "lon": -47.2235, "tipo": "terminal" },
-    { "id": "centro", "nome": "Centro – Praça Prudente de Moraes", "lat": -23.0893, "lon": -47.2181, "tipo": "bairro" },
-    { "id": "parque-ecologico", "nome": "Parque Ecológico", "lat": -23.0905, "lon": -47.2290, "tipo": "lazer" },
-    { "id": "shopping", "nome": "Shopping (região)", "lat": -23.0815, "lon": -47.2135, "tipo": "comercio" },
-    { "id": "cidade-nova", "nome": "Cidade Nova", "lat": -23.0790, "lon": -47.2030, "tipo": "bairro" },
-    { "id": "distrito-industrial", "nome": "Distrito Industrial", "lat": -23.0680, "lon": -47.1880, "tipo": "emprego" },
-    { "id": "polo-sul", "nome": "Polo Empresarial Sul (exemplo)", "lat": -23.1060, "lon": -47.1900, "tipo": "emprego" },
-    { "id": "morada-do-sol", "nome": "Jardim Morada do Sol", "lat": -23.1185, "lon": -47.2440, "tipo": "bairro" },
-    { "id": "pau-preto", "nome": "Jardim Pau Preto", "lat": -23.1040, "lon": -47.2300, "tipo": "bairro" },
-    { "id": "jd-california", "nome": "Jardim Califórnia", "lat": -23.0960, "lon": -47.2450, "tipo": "bairro" },
-    { "id": "jd-regina", "nome": "Jardim Regina", "lat": -23.0760, "lon": -47.2380, "tipo": "bairro" },
-    { "id": "jd-america", "nome": "Jardim América", "lat": -23.1030, "lon": -47.2100, "tipo": "bairro" },
-    { "id": "hospital", "nome": "Hospital (região central)", "lat": -23.0950, "lon": -47.2100, "tipo": "saude" }
+    { "id": "casa-demo", "nome": "Casa (exemplo) – Jardim Esplendor", "lat": -23.0880, "lon": -47.1930, "tipo": "exemplo" },
+    { "id": "fabrica-demo", "nome": "Fábrica (exemplo) – Distrito Industrial Nova Era", "lat": -23.1410, "lon": -47.2215, "tipo": "exemplo" },
+    { "id": "TC", "nome": "Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola", "lat": -23.0880, "lon": -47.2092, "tipo": "terminal" },
+    { "id": "TR", "nome": "Terminal Rodoviário de Indaiatuba", "lat": -23.1099, "lon": -47.2095, "tipo": "terminal" },
+    { "id": "centro", "nome": "Centro – Praça Prudente de Moraes", "lat": -23.0893, "lon": -47.2150, "tipo": "bairro" },
+    { "id": "parque-ecologico", "nome": "Parque Ecológico", "lat": -23.1043, "lon": -47.2281, "tipo": "lazer" },
+    { "id": "cidade-nova", "nome": "Cidade Nova", "lat": -23.0810, "lon": -47.2050, "tipo": "bairro" },
+    { "id": "di-giomi", "nome": "Distrito Industrial Domingos Giomi", "lat": -23.1316, "lon": -47.2321, "tipo": "emprego" },
+    { "id": "di-novaera", "nome": "Distrito Industrial Nova Era", "lat": -23.1373, "lon": -47.2290, "tipo": "emprego" },
+    { "id": "di-bartolomai", "nome": "Distrito Industrial Bartolomai", "lat": -23.1057, "lon": -47.2040, "tipo": "emprego" },
+    { "id": "morada-do-sol", "nome": "Jardim Morada do Sol", "lat": -23.1200, "lon": -47.2400, "tipo": "bairro" },
+    { "id": "tancredo", "nome": "Jardim Tancredo Neves", "lat": -23.1090, "lon": -47.2290, "tipo": "bairro" },
+    { "id": "jd-america", "nome": "Jardim América", "lat": -23.0930, "lon": -47.1850, "tipo": "bairro" },
+    { "id": "jd-esplendor", "nome": "Jardim Esplendor", "lat": -23.0870, "lon": -47.1930, "tipo": "bairro" },
+    { "id": "jd-morumbi", "nome": "Jardim Morumbi", "lat": -23.0650, "lon": -47.2130, "tipo": "bairro" },
+    { "id": "jd-pompeia", "nome": "Jardim Pompéia", "lat": -23.0960, "lon": -47.2170, "tipo": "bairro" },
+    { "id": "recanto-do-vale", "nome": "Jardim Recanto do Vale", "lat": -23.1020, "lon": -47.2190, "tipo": "bairro" }
   ]
 }

@@ -1,26 +1,35 @@
 {
-  "_aviso": "ATENÇÃO: coordenadas APROXIMADAS, digitadas para o protótipo. Confira cada ponto no mapa (ex.: openstreetmap.org, clique com o botão direito > Mostrar endereço) e corrija aqui antes da apresentação. Depois de editar os terminais, rode npm run gerar-gtfs para regenerar o GTFS de exemplo.",
+  "_aviso": "Coordenadas APROXIMADAS. Os dois terminais foram tirados do OpenStreetMap (amenity=bus_station) em 10/2026, mas CONFIRA no mapa antes da apresentação. Depois de editar os terminais, rode npm run gerar-gtfs para regenerar o GTFS de exemplo.",
   "cidade": "Indaiatuba - SP",
-  "centroMapa": { "lat": -23.09, "lon": -47.218, "zoom": 14 },
-  "limitesBusca": { "oeste": -47.30, "norte": -23.03, "leste": -47.13, "sul": -23.16 },
+  "centroMapa": {
+    "lat": -23.1,
+    "lon": -47.215,
+    "zoom": 14
+  },
+  "limitesBusca": {
+    "oeste": -47.3,
+    "norte": -23.03,
+    "leste": -47.13,
+    "sul": -23.16
+  },
   "terminais": {
     "central": {
       "id": "TC",
       "nome": "Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola",
       "nomeCurto": "Terminal Central",
-      "lat": -23.0905,
-      "lon": -47.2155,
+      "lat": -23.088,
+      "lon": -47.2092,
       "raioAreaM": 120,
-      "_conferir": "posição aproximada – conferir no mapa"
+      "_conferir": "OSM: Terminal Central Prefeito Alberto Brizzola – Ponto Cidadão (Av. Presidente Vargas / R. Vinte e Quatro de Maio) – conferir"
     },
     "rodoviario": {
       "id": "TR",
       "nome": "Terminal Rodoviário de Indaiatuba",
       "nomeCurto": "Terminal Rodoviário",
-      "lat": -23.0965,
-      "lon": -47.2235,
+      "lat": -23.1099,
+      "lon": -47.2095,
       "raioAreaM": 120,
-      "_conferir": "posição aproximada – conferir no mapa"
+      "_conferir": "OSM: Rodoviária de Indaiatuba (Rua Embira, Jd. Oliveira Camargo) – conferir"
     }
   },
   "velocidadesKmh": {
@@ -40,6 +49,11 @@
     "folgaEmbarqueS": 60
   },
   "zonasIndustriais": [
-    { "nome": "Distrito Industrial (exemplo)", "lat": -23.067, "lon": -47.185, "raioM": 900 }
+    {
+      "nome": "Distritos Industriais Domingos Giomi / Nova Era (aprox.)",
+      "lat": -23.137,
+      "lon": -47.228,
+      "raioM": 900
+    }
   ]
 }
