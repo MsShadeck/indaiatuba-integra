@@ -1,12 +1,18 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { api } from './api';
 import CampoBusca from './components/CampoBusca';
 import CardOpcao from './components/CardOpcao';
+import ControlesSimulacao from './components/ControlesSimulacao';
 import DetalheViagem from './components/DetalheViagem';
 import Mapa, { type Camadas } from './components/Mapa';
 import PainelCamadas from './components/PainelCamadas';
+import PainelDemo from './components/PainelDemo';
+import Toasts from './components/Toasts';
+import { useAlertas, type Toast } from './hooks/useAlertas';
 import { useAgora, useAoVivo } from './hooks/useAoVivo';
-import { IcAlvo, IcCamadas, IcTrocar } from './icones';
+import { useSimulacao } from './hooks/useSimulacao';
+import { IcAlvo, IcCamadas, IcTrocar, IcVaritaDemo } from './icones';
+import { kg } from './util';
 import type { Config, Itinerario, Lugar, Rede } from './tipos';
 
 export default function App() {
@@ -24,6 +30,8 @@ export default function App() {
   const [selId, setSelId] = useState<string | null>(null);
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
+  const [toasts, setToasts] = useState<Toast[]>([]);
+  const [verDemo, setVerDemo] = useState(false);
 
   const { dados, conectado } = useAoVivo();
   const agora = useAgora(1000);
@@ -43,6 +51,16 @@ export default function App() {
 
   const selecionado = useMemo(() => opcoes.find((o) => o.id === selId) ?? null, [opcoes, selId]);
 
+  const notificar = useCallback((t: Toast) => setToasts((ts) => [...ts, t]), []);
+  const aoConcluir = useCallback((it: Itinerario) => {
+    notificar({
+      id: `fim-${Date.now()}`, tipo: 'ok', titulo: 'Você chegou! Viagem concluída.',
+      texto: `Você evitou ${kg(it.co2.evitadoKg)} de CO₂ em relação ao carro.`,
+    });
+  }, [notificar]);
+  const simulacao = useSimulacao(selecionado, aoConcluir);
+  const { sim } = simulacao;
+
   async function planejar(d = de, p = para) {
     if (!d || !p) return;
     setCarregando(true);
@@ -59,6 +77,18 @@ export default function App() {
       setCarregando(false);
     }
   }
+
+  function replanejar() {
+    if (sim.ativo && sim.pos) {
+      const atual = { nome: 'Posição atual', lat: sim.pos[0], lon: sim.pos[1] };
+      simulacao.parar();
+      setDe(atual);
+    } else planejar();
+  }
+
+  useAlertas({
+    it: selecionado, aoVivo: dados, agora, sim, terminais: rede?.terminais ?? [], notificar, replanejar,
+  });
 
   // planeja automaticamente quando origem e destino estão definidos
   useEffect(() => {
@@ -85,18 +115,26 @@ export default function App() {
   return (
     <div className="app">
       <Mapa config={config} rede={rede} ciclovias={ciclovias} aoVivo={dados} camadas={camadas}
-        itinerario={selecionado} de={de} para={para} posicaoUsuario={null} />
+        itinerario={selecionado} de={de} para={para} posicaoUsuario={sim.ativo ? sim.pos : null} />
 
       <header className="topo">
         <div className="marca">
           <img src="/favicon.svg" alt="" />
           <div>Indaiatuba Integra<small className={`status-vivo ${conectado ? '' : 'off'}`}>{conectado ? 'ao vivo' : 'reconectando…'}</small></div>
         </div>
+        <button className="btn-topo" onClick={() => setVerDemo(true)} aria-label="Modo apresentação">
+          <IcVaritaDemo /><span className="rotulo">Demo</span>
+        </button>
         <button className="btn-topo" aria-pressed={verCamadas} onClick={() => setVerCamadas((v) => !v)} aria-label="Camadas do mapa">
           <IcCamadas /><span className="rotulo">Camadas</span>
         </button>
       </header>
       {verCamadas && <PainelCamadas camadas={camadas} onChange={setCamadas} onFechar={() => setVerCamadas(false)} />}
+      <Toasts itens={toasts} onFechar={(id) => setToasts((ts) => ts.filter((t) => t.id !== id))} />
+      {verDemo && (
+        <PainelDemo it={selecionado} onFechar={() => setVerDemo(false)} onErro={setErro}
+          onSimular={() => { simulacao.iniciar(); setRecolhido(true); }} />
+      )}
 
       <main className={`painel ${recolhido ? 'recolhido' : ''}`}>
         <button className="alca" onClick={() => setRecolhido((r) => !r)} aria-label={recolhido ? 'Expandir painel' : 'Recolher painel'}><span /></button>
@@ -134,7 +172,11 @@ export default function App() {
             </div>
           </>
         )}
-        {selecionado && <DetalheViagem it={selecionado} aoVivo={dados} agora={agora} />}
+        {selecionado && (
+          <DetalheViagem it={selecionado} aoVivo={dados} agora={agora}>
+            <ControlesSimulacao it={selecionado} {...simulacao} />
+          </DetalheViagem>
+        )}
       </main>
     </div>
   );

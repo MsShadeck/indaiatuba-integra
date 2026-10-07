@@ -8,7 +8,7 @@ import { estacoes, esvaziarEstacao, gbfs, listaPatinetes, passoGbfs, resetarGbfs
 import { geocodificar } from './geocode';
 import { patterns, routes, shapes, stops } from './gtfs';
 import {
-  atualizarVeiculos, feedTripUpdates, feedVehiclePositions, proximasPartidas, veiculosAtuais,
+  atualizarVeiculos, definirAtraso, feedTripUpdates, limparAtrasosForcados, feedVehiclePositions, proximasPartidas, veiculosAtuais,
 } from './realtime';
 import { impactoMockado } from './impacto';
 import { planejar } from './planner';
@@ -86,8 +86,19 @@ app.post('/api/demo/estacao/:id/esvaziar', (req, res) => {
   emitirTick();
   res.json(e);
 });
+// Faz o ônibus de uma viagem chegar em N minutos (para demonstrar o alerta "seu ônibus chega em 3 min")
+app.post('/api/demo/onibus', (req, res) => {
+  const { tripId, programadaMs, emMin = 3 } = req.body ?? {};
+  if (!tripId || !Number.isFinite(programadaMs)) return res.status(400).json({ erro: 'tripId e programadaMs são obrigatórios' });
+  const atraso = Math.round((Date.now() + emMin * 60000 - programadaMs) / 1000);
+  definirAtraso(tripId, atraso);
+  atualizarVeiculos();
+  emitirTick();
+  res.json({ tripId, atrasoS: atraso });
+});
 app.post('/api/demo/reset', (_req, res) => {
   resetarGbfs();
+  limparAtrasosForcados();
   emitirTick();
   res.json({ ok: true });
 });

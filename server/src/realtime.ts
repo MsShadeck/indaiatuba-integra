@@ -34,8 +34,14 @@ export function atrasoDe(tripId: string): number {
 }
 
 /** Ajusta manualmente o atraso de uma viagem (usado no modo demo). */
+const forcados = new Set<string>();
 export function definirAtraso(tripId: string, s: number) {
   atrasos.set(tripId, s);
+  forcados.add(tripId); // não sofre o passeio aleatório
+}
+export function limparAtrasosForcados() {
+  for (const id of forcados) atrasos.delete(id);
+  forcados.clear();
 }
 
 export interface Veiculo {
@@ -84,11 +90,12 @@ export function atualizarVeiculos(agora = Date.now()): Veiculo[] {
       // considera também viagens de "ontem" que passam da meia-noite (horários > 24:00)
       for (const base of [s, s + DIA]) {
         const ini = t.stopTimes[0].dep, fim = t.stopTimes[t.stopTimes.length - 1].arr;
-        if (base < ini - 900 || base > fim + 400) continue;
+        const tEff = base - (atrasos.get(t.id) ?? 0); // considera adiantamento/atraso atual
+        if (tEff < ini - 900 || tEff > fim + 400) continue;
         let atraso = atrasos.get(t.id);
         if (atraso === undefined) atraso = Math.round(rand() * 150 - 20); // -20 s a +130 s
         // passeio aleatório pequeno, limitado a [-60 s, +300 s]
-        atraso = Math.max(-60, Math.min(300, atraso + Math.round((rand() - 0.5) * 6)));
+        if (!forcados.has(t.id)) atraso = Math.max(-60, Math.min(300, atraso + Math.round((rand() - 0.5) * 6)));
         atrasos.set(t.id, atraso);
         const pos = posicaoDaViagem(t, base - atraso);
         if (!pos) continue;

@@ -97,7 +97,7 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid 
 
 .btn {
   min-height: 50px; border-radius: 12px; border: 0; padding: 0 18px; font-weight: 700; font-size: 1rem;
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
 }
 .btn-primario { background: var(--marca); color: #fff; }
 .btn-primario:hover { background: var(--marca-escura); }

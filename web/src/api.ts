@@ -24,6 +24,8 @@ export const api = {
   partidas: (paradaId: string) => json<{ parada: { nome: string }; partidas: any[] }>(`/api/paradas/${paradaId}/partidas?limite=8`),
   impacto: () => json<{ viagens: ViagemImpacto[] }>('/api/impacto'),
   esvaziarEstacao: (id: string) => json(`/api/demo/estacao/${id}/esvaziar`, { method: 'POST' }),
+  anteciparOnibus: (tripId: string, programadaMs: number, emMin = 3) =>
+    json('/api/demo/onibus', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tripId, programadaMs, emMin }) }),
   resetDemo: () => json('/api/demo/reset', { method: 'POST' }),
 };
 
