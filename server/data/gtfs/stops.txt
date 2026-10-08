@@ -1,15 +1,15 @@
 stop_id,stop_name,stop_lat,stop_lon,location_type
-TC,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,-23.088,-47.2092,0
-TR,Terminal Rodoviário de Indaiatuba,-23.1099,-47.2095,0
-morada1,Jd. Morada do Sol – Ponto Final,-23.122,-47.242,0
-morada2,Jd. Morada do Sol – Av. Principal,-23.117,-47.234,0
-tancredo,Jd. Tancredo Neves,-23.109,-47.229,0
-parqueeco,Parque Ecológico,-23.0985,-47.2235,0
-centro,Centro – Praça Prudente de Moraes,-23.0893,-47.215,0
-cidadenova,Cidade Nova,-23.081,-47.205,0
-morumbi,Jd. Morumbi,-23.065,-47.213,0
-pompeia,Jd. Pompéia,-23.096,-47.217,0
-recanto,Jd. Recanto do Vale,-23.102,-47.219,0
-bartolomai,Distrito Industrial Bartolomai,-23.1057,-47.204,0
-di_giomi,Distrito Industrial Domingos Giomi,-23.1316,-47.2321,0
-di_novaera,Distrito Industrial Nova Era,-23.1373,-47.229,0
+TC,Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola,-23.087886,-47.209475,0
+TR,Terminal Rodoviário de Indaiatuba,-23.110286,-47.20915,0
+morada1,Jd. Morada do Sol – Ponto Final,-23.122066,-47.24202,0
+morada2,Jd. Morada do Sol – Av. Principal,-23.117043,-47.233824,0
+tancredo,Jd. Tancredo Neves,-23.108932,-47.229122,0
+parqueeco,Parque Ecológico,-23.098609,-47.22323,0
+centro,Centro – Praça Prudente de Moraes,-23.089231,-47.21496,0
+cidadenova,Cidade Nova,-23.081136,-47.204714,0
+morumbi,Jd. Morumbi,-23.067166,-47.214752,0
+pompeia,Jd. Pompéia,-23.095981,-47.216962,0
+recanto,Jd. Recanto do Vale,-23.101944,-47.218974,0
+bartolomai,Distrito Industrial Bartolomai,-23.105663,-47.203953,0
+di_giomi,Distrito Industrial Domingos Giomi,-23.131877,-47.232451,0
+di_novaera,Distrito Industrial Nova Era,-23.137257,-47.228905,0

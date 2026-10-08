@@ -187,10 +187,7 @@ const pt = (p: LatLon, nome: string): Ponto => ({ nome, lat: p[0], lon: p[1] });
 function caminhar(a: Ponto, b: Ponto, t0: number): Trecho | null {
   const d0 = dist([a.lat, a.lon], [b.lat, b.lon]);
   if (d0 < 25) return null;
-  // trechos curtos: a malha sintética (~180 m) distorceria; usa linha reta com fator de desvio
-  const r = d0 < 400
-    ? { pontos: [[a.lat, a.lon], [b.lat, b.lon]] as LatLon[], distanciaM: d0 * 1.2 }
-    : rotear([a.lat, a.lon], [b.lat, b.lon], 'caminhada');
+  const r = rotear([a.lat, a.lon], [b.lat, b.lon], 'caminhada');
   const dur = (r.distanciaM / ms(V.caminhada)) * 1000;
   return { modo: 'caminhada', de: a, para: b, distanciaM: r.distanciaM, inicioMs: t0, fimMs: t0 + dur, geometria: r.pontos };
 }

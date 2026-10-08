@@ -1,105 +1,137 @@
-// Roteamento leve para caminhada, bike e patinete.
+// Roteamento sobre o viário REAL de Indaiatuba (extrato do OpenStreetMap em data/viario.json,
+// gerado por `npm run baixar-viario`).
 //
-// Não temos o viário real offline, então o grafo é:
-//   (1) uma malha SINTÉTICA de ruas (grade ~180 m com diagonais), onde algumas linhas da grade
-//       fazem o papel de avenidas sem infraestrutura cicloviária e a zona industrial é toda "sem infra";
-//   (2) as ciclovias/ciclofaixas do GeoJSON, densificadas e conectadas à malha.
-// O custo de cada aresta = comprimento × fator do tipo de via, de acordo com o perfil.
-// Para produção: troque a malha sintética pelo viário do OpenStreetMap (ex.: extrato .osm.pbf
-// filtrado por highway=*), mantendo a mesma classificação de infraestrutura.
-import { ciclovias, config } from './dados.js';
-import { densify, dist, type LatLon } from './geo.js';
+// Perfis:
+//   - caminhada: calçadas, ruas e caminhos de pedestre, em qualquer sentido;
+//   - micro (bike/patinete): respeita mão única e prioriza ciclovias/ciclofaixas, evitando vias rápidas;
+//   - onibus: só vias para veículos, respeita mão única, prefere avenidas (usado para os traçados do GTFS).
+// O custo de cada aresta = comprimento × fator do tipo de via (micro) ou tempo de percurso (ônibus).
+import fs from 'node:fs';
+import path from 'node:path';
+import { config, DATA_DIR } from './dados.js';
+import { dist, type LatLon } from './geo.js';
 
 export type Infra = 'ciclovia' | 'ciclofaixa' | 'compartilhada' | 'sem';
-export type Perfil = 'caminhada' | 'micro';
+export type Perfil = 'caminhada' | 'micro' | 'onibus';
 
-const FATORES: Record<Perfil, Record<Infra, number>> = {
-  // prioriza ciclovias/ciclofaixas e evita vias sem infraestrutura
-  micro: { ciclovia: 0.55, ciclofaixa: 0.7, compartilhada: 1.0, sem: 1.8 },
-  caminhada: { ciclovia: 1.0, ciclofaixa: 1.0, compartilhada: 1.0, sem: 1.0 },
+const FATORES: Record<Infra, number> = { ciclovia: 0.55, ciclofaixa: 0.7, compartilhada: 1.0, sem: 1.8 };
+// velocidade média do ônibus por classe de via (km/h), só para escolher o caminho
+const VEL_ONIBUS: Record<string, number> = {
+  motorway: 70, trunk: 55, primary: 45, secondary: 40, tertiary: 35, unclassified: 28, residential: 25,
+  living_street: 12, service: 10, motorway_link: 40, trunk_link: 35, primary_link: 35, secondary_link: 30, tertiary_link: 28,
 };
-const FATOR_MIN: Record<Perfil, number> = { micro: 0.55, caminhada: 1.0 };
+const BIT: Record<Perfil, number> = { onibus: 1, micro: 2, caminhada: 4 };
 
-interface Aresta { para: number; len: number; infra: Infra }
+interface Via { h: string; o: number; ob: number; m: string; i: Infra; n?: string; v: number[] }
+const viario: { nos: number[]; vias: Via[] } = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'viario.json'), 'utf8'));
+
+interface Aresta { para: number; len: number; infra: Infra; mask: number; vel: number }
 const lat: number[] = [];
 const lon: number[] = [];
 const adj: Aresta[][] = [];
-
-function novoNo(p: LatLon) {
-  lat.push(p[0]);
-  lon.push(p[1]);
+for (let k = 0; k < viario.nos.length; k += 2) {
+  lat.push(viario.nos[k]);
+  lon.push(viario.nos[k + 1]);
   adj.push([]);
-  return lat.length - 1;
 }
-function ligar(a: number, b: number, infra: Infra) {
-  const len = dist([lat[a], lon[a]], [lat[b], lon[b]]);
-  adj[a].push({ para: b, len, infra });
-  adj[b].push({ para: a, len, infra });
-}
+const pos = (n: number): LatLon => [lat[n], lon[n]];
 
-// ---------- (1) Malha sintética ----------
-const PASSO_M = 180;
-const LAT0 = -23.16, LAT1 = -23.04, LON0 = -47.275, LON1 = -47.155;
-const DLAT = PASSO_M / 111320;
-const DLON = PASSO_M / (111320 * Math.cos((23.1 * Math.PI) / 180));
-const LINHAS = Math.ceil((LAT1 - LAT0) / DLAT) + 1;
-const COLS = Math.ceil((LON1 - LON0) / DLON) + 1;
-const idGrade = (r: number, c: number) => r * COLS + c;
-
-for (let r = 0; r < LINHAS; r++) for (let c = 0; c < COLS; c++) novoNo([LAT0 + r * DLAT, LON0 + c * DLON]);
+// Segmentos (para encaixar um ponto qualquer na via mais próxima)
+interface Seg { a: number; b: number; len: number; infra: Infra; ida: number; volta: number; vel: number }
+const segs: Seg[] = [];
 
 const naZonaIndustrial = (p: LatLon) => config.zonasIndustriais.some((z) => dist(p, [z.lat, z.lon]) <= z.raioM);
-for (let r = 0; r < LINHAS; r++)
-  for (let c = 0; c < COLS; c++) {
-    const a = idGrade(r, c);
-    const viz: [number, number, boolean][] = [[r, c + 1, false], [r + 1, c, false], [r + 1, c + 1, true], [r + 1, c - 1, true]];
-    for (const [r2, c2, diag] of viz) {
-      if (r2 >= LINHAS || c2 < 0 || c2 >= COLS) continue;
-      const b = idGrade(r2, c2);
-      const meio: LatLon = [(lat[a] + lat[b]) / 2, (lon[a] + lon[b]) / 2];
-      // avenidas: a cada 5 linhas/colunas da grade (vias rápidas, sem infraestrutura)
-      const avenida = !diag && ((r === r2 && r % 5 === 0) || (c === c2 && c % 5 === 0));
-      ligar(a, b, naZonaIndustrial(meio) || avenida ? 'sem' : 'compartilhada');
-    }
-  }
-const NOS_GRADE = lat.length;
 
-function noGradeMaisProximo(p: LatLon): number {
-  const r = Math.max(0, Math.min(LINHAS - 1, Math.round((p[0] - LAT0) / DLAT)));
-  const c = Math.max(0, Math.min(COLS - 1, Math.round((p[1] - LON0) / DLON)));
-  return idGrade(r, c);
-}
-
-// ---------- (2) Ciclovias e ciclofaixas ----------
-const nosCiclo: number[] = [];
-for (const f of ciclovias.features as any[]) {
-  if (f.geometry?.type !== 'LineString') continue;
-  const infra: Infra = f.properties?.tipo === 'ciclovia' ? 'ciclovia' : 'ciclofaixa';
-  const pts = densify((f.geometry.coordinates as [number, number][]).map(([x, y]) => [y, x] as LatLon), 50);
-  let ant = -1;
-  for (const p of pts) {
-    // reaproveita nó de ciclovia já existente no mesmo lugar (cruzamentos/encontros)
-    let id = nosCiclo.find((n) => dist([lat[n], lon[n]], p) < 20);
-    if (id === undefined) {
-      id = novoNo(p);
-      nosCiclo.push(id);
-      // conexão com a malha de ruas
-      const g = noGradeMaisProximo(p);
-      ligar(id, g, 'compartilhada');
+for (const v of viario.vias) {
+  const carro = v.m.includes('c'), bike = v.m.includes('b'), pe = v.m.includes('p');
+  const vel = VEL_ONIBUS[v.h] ?? 20;
+  for (let k = 0; k < v.v.length - 1; k++) {
+    const a = v.v[k], b = v.v[k + 1];
+    if (a === b) continue;
+    const len = dist(pos(a), pos(b));
+    // na zona industrial (tráfego de caminhões) rua sem ciclovia conta como "sem infraestrutura"
+    const infra: Infra = v.i === 'compartilhada' && naZonaIndustrial([(lat[a] + lat[b]) / 2, (lon[a] + lon[b]) / 2]) ? 'sem' : v.i;
+    let ida = 0, volta = 0;
+    if (carro) { if (v.o >= 0) ida |= 1; if (v.o <= 0) volta |= 1; }
+    if (bike) {
+      const o = v.ob ? v.o : 0;
+      if (o >= 0) ida |= 2;
+      if (o <= 0) volta |= 2;
     }
-    if (ant >= 0 && ant !== id) ligar(ant, id, infra);
-    ant = id;
+    if (pe) { ida |= 4; volta |= 4; }
+    if (ida) adj[a].push({ para: b, len, infra, mask: ida, vel });
+    if (volta) adj[b].push({ para: a, len, infra, mask: volta, vel });
+    segs.push({ a, b, len, infra, ida, volta, vel });
   }
 }
 
-console.log(`[grafo] ${NOS_GRADE} nós de malha + ${nosCiclo.length} nós de ciclovia`);
+// ---------- Maior componente conexo por perfil (evita encaixar em pedaços isolados do mapa) ----------
+const naRede: Record<Perfil, Uint8Array> = { caminhada: new Uint8Array(lat.length), micro: new Uint8Array(lat.length), onibus: new Uint8Array(lat.length) };
+for (const perfil of Object.keys(BIT) as Perfil[]) {
+  const bit = BIT[perfil];
+  const viz: number[][] = adj.map(() => []);
+  adj.forEach((es, u) => es.forEach((e) => { if (e.mask & bit) { viz[u].push(e.para); viz[e.para].push(u); } }));
+  const comp = new Int32Array(lat.length).fill(-1);
+  const tamanhos: number[] = [];
+  for (let s = 0; s < lat.length; s++) {
+    if (comp[s] >= 0 || !viz[s].length) continue;
+    const c = tamanhos.length;
+    let n = 0;
+    const pilha = [s];
+    comp[s] = c;
+    while (pilha.length) {
+      const u = pilha.pop()!;
+      n++;
+      for (const w of viz[u]) if (comp[w] < 0) { comp[w] = c; pilha.push(w); }
+    }
+    tamanhos.push(n);
+  }
+  const maior = tamanhos.indexOf(Math.max(...tamanhos));
+  for (let n = 0; n < lat.length; n++) if (comp[n] === maior) naRede[perfil][n] = 1;
+}
 
-function noMaisProximo(p: LatLon): number {
-  let melhor = noGradeMaisProximo(p);
-  let dm = dist(p, [lat[melhor], lon[melhor]]);
-  for (const n of nosCiclo) {
-    const d = dist(p, [lat[n], lon[n]]);
-    if (d < dm) { dm = d; melhor = n; }
+// ---------- Índice espacial dos segmentos (grade de ~220 m) ----------
+const CELULA = 0.002;
+const grade = new Map<string, number[]>();
+const chave = (i: number, j: number) => `${i},${j}`;
+segs.forEach((s, k) => {
+  const i0 = Math.floor(Math.min(lat[s.a], lat[s.b]) / CELULA), i1 = Math.floor(Math.max(lat[s.a], lat[s.b]) / CELULA);
+  const j0 = Math.floor(Math.min(lon[s.a], lon[s.b]) / CELULA), j1 = Math.floor(Math.max(lon[s.a], lon[s.b]) / CELULA);
+  for (let i = i0; i <= i1; i++) for (let j = j0; j <= j1; j++) {
+    const c = chave(i, j);
+    const l = grade.get(c);
+    if (l) l.push(k); else grade.set(c, [k]);
+  }
+});
+
+console.log(`[grafo] viário real (OSM): ${lat.length} nós, ${segs.length} segmentos`);
+
+interface Encaixe { seg: Seg; t: number; q: LatLon; off: number }
+
+/** Projeta p no segmento de via mais próximo que o perfil pode usar. */
+function encaixar(p: LatLon, perfil: Perfil): Encaixe | null {
+  const bit = BIT[perfil];
+  const ci = Math.floor(p[0] / CELULA), cj = Math.floor(p[1] / CELULA);
+  let melhor = null as Encaixe | null;
+  const kx = Math.cos((p[0] * Math.PI) / 180);
+  for (let raio = 0; raio <= 12; raio++) {
+    for (let i = ci - raio; i <= ci + raio; i++)
+      for (let j = cj - raio; j <= cj + raio; j++) {
+        if (Math.max(Math.abs(i - ci), Math.abs(j - cj)) !== raio) continue; // só o anel novo
+        for (const k of grade.get(chave(i, j)) ?? []) {
+          const s = segs[k];
+          if (!((s.ida | s.volta) & bit) || !naRede[perfil][s.a] || !naRede[perfil][s.b]) continue;
+          if (perfil === 'onibus' && s.vel <= 12) continue; // ônibus não parte de via de serviço/viela
+          const bx = (lon[s.b] - lon[s.a]) * kx, by = lat[s.b] - lat[s.a];
+          const px = (p[1] - lon[s.a]) * kx, py = p[0] - lat[s.a];
+          const t = Math.max(0, Math.min(1, (px * bx + py * by) / (bx * bx + by * by || 1e-12)));
+          const q: LatLon = [lat[s.a] + (lat[s.b] - lat[s.a]) * t, lon[s.a] + (lon[s.b] - lon[s.a]) * t];
+          const off = dist(p, q);
+          if (!melhor || off < melhor.off) melhor = { seg: s, t, q, off };
+        }
+      }
+    // achou algo e o próximo anel já está mais longe do que o melhor encontrado
+    if (melhor && melhor.off < raio * CELULA * 111320 * kx) break;
   }
   return melhor;
 }
@@ -143,46 +175,88 @@ class Heap {
 export interface Segmento { pontos: LatLon[]; infra: Infra; distanciaM: number }
 export interface Rota { pontos: LatLon[]; segmentos: Segmento[]; distanciaM: number; percentualCiclovia: number }
 
-/** Rota de `a` até `b` no grafo, com os trechos classificados por infraestrutura. */
+const custoAresta = (len: number, infra: Infra, vel: number, perfil: Perfil) =>
+  perfil === 'onibus' ? len / vel : perfil === 'micro' ? len * FATORES[infra] : len;
+// heurística admissível: menor custo possível por metro em cada perfil
+const CUSTO_MIN: Record<Perfil, number> = { onibus: 1 / 70, micro: FATORES.ciclovia, caminhada: 1 };
+
+function rotaReta(a: LatLon, b: LatLon): Rota {
+  const d = dist(a, b);
+  return { pontos: [a, b], segmentos: [{ pontos: [a, b], infra: 'compartilhada', distanciaM: d }], distanciaM: d, percentualCiclovia: 0 };
+}
+
+/** Rota de `a` até `b` pelas ruas, com os trechos classificados por infraestrutura. */
 export function rotear(a: LatLon, b: LatLon, perfil: Perfil): Rota {
-  const s = noMaisProximo(a);
-  const t = noMaisProximo(b);
-  const fat = FATORES[perfil];
-  const g = new Map<number, number>([[s, 0]]);
+  const bit = BIT[perfil];
+  const ea = encaixar(a, perfil);
+  const eb = encaixar(b, perfil);
+  if (!ea || !eb) return rotaReta(a, b);
+
+  // nós virtuais: S (ponto de origem encaixado na via) e T (destino encaixado)
+  const S = lat.length, T = lat.length + 1;
+  const extra = new Map<number, Aresta[]>([[S, []], [T, []]]);
+  const arestas = (u: number) => (u >= S ? extra.get(u)! : adj[u]);
+  const temporarias: [number, Aresta][] = [];
+  const ligarT = (u: number, e: Aresta) => { adj[u].push(e); temporarias.push([u, e]); };
+  const posV = (n: number): LatLon => (n === S ? ea.q : n === T ? eb.q : pos(n));
+
+  {
+    const s = ea.seg;
+    if (s.volta & bit) extra.get(S)!.push({ para: s.a, len: s.len * ea.t, infra: s.infra, mask: bit, vel: s.vel });
+    if (s.ida & bit) extra.get(S)!.push({ para: s.b, len: s.len * (1 - ea.t), infra: s.infra, mask: bit, vel: s.vel });
+  }
+  {
+    const s = eb.seg;
+    if (s.ida & bit) ligarT(s.a, { para: T, len: s.len * eb.t, infra: s.infra, mask: bit, vel: s.vel });
+    if (s.volta & bit) ligarT(s.b, { para: T, len: s.len * (1 - eb.t), infra: s.infra, mask: bit, vel: s.vel });
+  }
+  if (ea.seg === eb.seg) {
+    const s = ea.seg;
+    const frente = eb.t >= ea.t;
+    if ((frente ? s.ida : s.volta) & bit)
+      extra.get(S)!.push({ para: T, len: s.len * Math.abs(eb.t - ea.t), infra: s.infra, mask: bit, vel: s.vel });
+  }
+
+  const g = new Map<number, number>([[S, 0]]);
   const veio = new Map<number, { de: number; infra: Infra }>();
   const fechado = new Set<number>();
   const heap = new Heap();
-  const h = (n: number) => dist([lat[n], lon[n]], [lat[t], lon[t]]) * FATOR_MIN[perfil];
-  heap.push(s, h(s));
-  while (heap.tamanho) {
-    const u = heap.pop();
-    if (u === t) break;
-    if (fechado.has(u)) continue;
-    fechado.add(u);
-    const gu = g.get(u)!;
-    for (const e of adj[u]) {
-      const custo = gu + e.len * fat[e.infra];
-      if (custo < (g.get(e.para) ?? Infinity)) {
-        g.set(e.para, custo);
-        veio.set(e.para, { de: u, infra: e.infra });
-        heap.push(e.para, custo + h(e.para));
+  const h = (n: number) => dist(posV(n), eb.q) * CUSTO_MIN[perfil];
+  heap.push(S, h(S));
+  try {
+    while (heap.tamanho) {
+      const u = heap.pop();
+      if (u === T) break;
+      if (fechado.has(u)) continue;
+      fechado.add(u);
+      const gu = g.get(u)!;
+      for (const e of arestas(u)) {
+        if (!(e.mask & bit)) continue;
+        const custo = gu + custoAresta(e.len, e.infra, e.vel, perfil);
+        if (custo < (g.get(e.para) ?? Infinity)) {
+          g.set(e.para, custo);
+          veio.set(e.para, { de: u, infra: e.infra });
+          heap.push(e.para, custo + h(e.para));
+        }
       }
     }
+  } finally {
+    for (const [u, e] of temporarias) adj[u].splice(adj[u].indexOf(e), 1);
   }
+  if (!veio.has(T)) return rotaReta(a, b);
 
   // reconstrói o caminho
-  const nos: number[] = [t];
+  const nos: number[] = [T];
   const infras: Infra[] = [];
-  let cur = t;
-  while (cur !== s && veio.has(cur)) {
+  let cur = T;
+  while (cur !== S) {
     const v = veio.get(cur)!;
     infras.unshift(v.infra);
     nos.unshift(v.de);
     cur = v.de;
   }
-  const pts: LatLon[] = nos.map((n) => [lat[n], lon[n]]);
-  // ligações do ponto real até o nó mais próximo
-  const pontos: LatLon[] = [a, ...pts, b];
+  // ligações do ponto real até a via (ex.: de dentro do lote até a rua)
+  const pontos: LatLon[] = [a, ...nos.map(posV), b];
   const infraPorAresta: Infra[] = ['compartilhada', ...infras, 'compartilhada'];
 
   const segmentos: Segmento[] = [];
@@ -202,4 +276,9 @@ export function rotear(a: LatLon, b: LatLon, perfil: Perfil): Rota {
     pontos: pontos.filter((p, i) => i === 0 || dist(p, pontos[i - 1]) >= 0.5),
     segmentos, distanciaM, percentualCiclovia: distanciaM > 0 ? Math.round((ciclo / distanciaM) * 100) : 0,
   };
+}
+
+/** Ponto da via (do perfil) mais próximo de `p` — usado para colocar paradas na rua. */
+export function pontoNaVia(p: LatLon, perfil: Perfil): LatLon {
+  return encaixar(p, perfil)?.q ?? p;
 }

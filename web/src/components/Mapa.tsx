@@ -96,9 +96,10 @@ export default function Mapa({ config, rede, ciclovias, aoVivo, camadas, itinera
   return (
     <MapContainer center={[config.centroMapa.lat, config.centroMapa.lon]} zoom={config.centroMapa.zoom}
       zoomControl={false} className="mapa" preferCanvas={false}>
+      {/* Mapa base do Waze (mesmos tiles do Waze Live Map); as rotas são calculadas no servidor sobre o viário do OSM */}
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" maxZoom={19} />
+        attribution='&copy; <a href="https://www.waze.com/live-map" target="_blank" rel="noreferrer">Waze</a> · rotas &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        url="https://worldtiles{s}.waze.com/tiles/{z}/{x}/{y}.png" subdomains="1234" maxZoom={19} />
       <ControleZoom />
       <AjustarZoom itinerario={itinerario} de={de} para={para} recolhido={painelRecolhido} />
 

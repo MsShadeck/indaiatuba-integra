@@ -2,7 +2,7 @@
   "_aviso": "Lista local de lugares (fallback offline da busca). Coordenadas aproximadas; itens do tipo exemplo são fictícios para a demo.",
   "lugares": [
     { "id": "casa-demo", "nome": "Casa (exemplo) – Jardim Esplendor", "lat": -23.0880, "lon": -47.1930, "tipo": "exemplo" },
-    { "id": "fabrica-demo", "nome": "Fábrica (exemplo) – Distrito Industrial Nova Era", "lat": -23.1410, "lon": -47.2215, "tipo": "exemplo" },
+    { "id": "fabrica-demo", "nome": "Fábrica (exemplo) – Distrito Industrial Nova Era", "lat": -23.1367, "lon": -47.2377, "tipo": "exemplo" },
     { "id": "TC", "nome": "Terminal Central – Ponto Cidadão Prefeito Alberto Brizzola", "lat": -23.0880, "lon": -47.2092, "tipo": "terminal" },
     { "id": "TR", "nome": "Terminal Rodoviário de Indaiatuba", "lat": -23.1099, "lon": -47.2095, "tipo": "terminal" },
     { "id": "centro", "nome": "Centro – Praça Prudente de Moraes", "lat": -23.0893, "lon": -47.2150, "tipo": "bairro" },

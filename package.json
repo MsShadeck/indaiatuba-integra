@@ -12,6 +12,7 @@
     "dev": "concurrently -k -n server,web -c green,cyan \"npm run dev -w server\" \"npm run dev -w web\"",
     "dev:https": "concurrently -k -n server,web -c green,cyan \"npm run dev -w server\" \"npm run dev:https -w web\"",
     "gerar-gtfs": "npm run gerar-gtfs -w server",
+    "baixar-viario": "npm run baixar-viario -w server",
     "typecheck": "npm run typecheck -w server && npm run typecheck -w web",
     "build": "npm run build -w web"
   },

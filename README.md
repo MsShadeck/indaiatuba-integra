@@ -10,7 +10,7 @@ Protótipo funcional da equipe de TI para o **Desafio 1.3 – Uso de Transporte 
 - **alertas** em tempo real e um **simulador de CO₂** evitado;
 - um **modo totem** para os hubs (Terminal Central e Terminal Rodoviário).
 
-> ⚠️ **Todos os dados são simulados**, mas usam os formatos padrão de mercado (GTFS, GTFS-Realtime e GBFS). As posições dos terminais vieram do OpenStreetMap e devem ser **conferidas** em `server/data/config.json`. As linhas de ônibus, estações, patinetes e ciclovias são **exemplos**.
+> ⚠️ **Todos os dados são simulados**, mas usam os formatos padrão de mercado (GTFS, GTFS-Realtime e GBFS). As posições dos terminais vieram do OpenStreetMap e devem ser **conferidas** em `server/data/config.json`. As linhas de ônibus, estações e patinetes são **exemplos**; o **viário e as ciclovias são reais** (OpenStreetMap), e o mapa base é o do **Waze**.
 
 ---
 
@@ -43,7 +43,7 @@ O `npm run dev` usa o `concurrently` para subir o **servidor** (Express + Socket
 | `NOMINATIM_UA` | User-Agent enviado ao Nominatim. **Coloque um contato real da equipe**, pois e-mails de exemplo são bloqueados. | `IndaiatubaIntegra/0.1 (prototipo de hackathon)` |
 | `GTFS_DIR` | pasta de um feed GTFS real | `server/data/gtfs` |
 
-Outros comandos: `npm run gerar-gtfs` regenera o GTFS fictício (depois de mudar os terminais no `config.json`), e `npm run typecheck` checa os tipos dos dois pacotes.
+Outros comandos: `npm run baixar-viario` baixa de novo as ruas e ciclovias reais de Indaiatuba (Overpass/OSM) para `server/data/viario.json` e `ciclovias.geojson`; `npm run gerar-gtfs` regenera o GTFS fictício, com os traçados calculados pelas ruas (rode depois de mudar os terminais no `config.json` ou o viário); e `npm run typecheck` checa os tipos dos dois pacotes.
 
 ---
 
@@ -62,7 +62,7 @@ flowchart LR
     LER["Leitor GTFS"]
     RT["Simulador GTFS-RT<br/>posição + atraso a cada 3 s"]
     BS["Simulador GBFS<br/>bikes/vagas · patinetes/bateria"]
-    GR["Grafo de rotas seguras<br/>malha sintética + ciclovias (A*)"]
+    GR["Grafo de rotas seguras<br/>viário real OSM + ciclovias (A*)"]
     PL["Planejador multimodal<br/>+ CO₂"]
     GEO["Proxy Nominatim<br/>+ lista local offline"]
     API["REST /api/*"]
@@ -74,7 +74,7 @@ flowchart LR
     TOT["Modo totem<br/>/totem/:hub"]
   end
 
-  OSM[("Tiles OSM<br/>Nominatim")]
+  OSM[("Tiles Waze<br/>Nominatim")]
 
   GTFS --> LER --> RT
   GBFSI --> BS
@@ -106,16 +106,18 @@ flowchart LR
     config.json            terminais (posição a CONFERIR), velocidades, parâmetros do planejador
     emissoes.json          fatores de CO₂ (valores de referência aproximados)
     lugares.json           lista local para a busca offline
-    ciclovias.geojson      malha cicloviária de EXEMPLO
+    viario.json            ruas reais de Indaiatuba (OSM), geradas por scripts/baixar-viario.ts
+    ciclovias.geojson      ciclovias/ciclofaixas reais (OSM)
     gtfs/*.txt             GTFS estático fictício (gerado por scripts/gerar-gtfs.ts)
     gbfs/station_information.json
-  scripts/gerar-gtfs.ts    gera 4 linhas fictícias que passam pelos dois terminais
+  scripts/baixar-viario.ts baixa o viário e as ciclovias do OpenStreetMap
+  scripts/gerar-gtfs.ts    gera 4 linhas fictícias que passam pelos dois terminais (traçado pelas ruas)
   src/
     index.ts               rotas REST, Socket.IO e modo demo
     gtfs.ts                leitor de GTFS
     realtime.ts            simulador GTFS-RT (posições, atrasos, partidas, feeds)
     gbfs.ts                simulador GBFS (Ecobike + patinetes) e feeds
-    grafo.ts               grafo de ruas + ciclovias e A* com custo por infraestrutura
+    grafo.ts               grafo do viário real e A* (perfis caminhada, bike/patinete e ônibus)
     planner.ts             planejador multimodal e cálculo de CO₂
     geocode.ts             proxy do Nominatim com User-Agent + fallback local
     impacto.ts             histórico mockado do mês
@@ -143,7 +145,7 @@ O app consome só os formatos padrão. Para ligar dados reais, a troca acontece 
 1. **GTFS estático da operadora:** descompacte o `.zip` em `server/data/gtfs/` (ou aponte `GTFS_DIR=/caminho`). O leitor (`gtfs.ts`) já entende o formato padrão e, se o feed não tiver `shape_dist_traveled`, projeta as paradas no traçado. Dá para apagar `scripts/gerar-gtfs.ts`.
 2. **GTFS-Realtime da operadora:** em `server/src/realtime.ts`, troque `atualizarVeiculos()` por um *fetch* da URL do feed `VehiclePositions`/`TripUpdates`. Decodifique com o pacote `gtfs-realtime-bindings` e preencha a mesma estrutura `Veiculo` e o mapa de atrasos por `trip_id`. Planejador, alertas, mapa e totem continuam iguais.
 3. **GBFS da Ecobike e dos patinetes:** em `server/src/gbfs.ts`, troque `estacoes()` e `listaPatinetes()` por leituras de `station_information` + `station_status` e de `vehicle_status` (ou `free_bike_status`) do operador. O `gbfs.json` de descoberta informa as URLs.
-4. **Malha cicloviária:** substitua `server/data/ciclovias.geojson` pelo GeoJSON oficial (`properties.tipo` = `ciclovia` ou `ciclofaixa`). Para roteamento sobre o viário real, troque a malha sintética de `grafo.ts` por um extrato do OpenStreetMap (`highway=*`), mantendo a classificação ciclovia / ciclofaixa / compartilhada / sem infraestrutura.
+4. **Viário e malha cicloviária:** já vêm do OpenStreetMap (`npm run baixar-viario`). Para usar o cadastro oficial da Prefeitura, gere `viario.json` com a mesma classificação ciclovia / ciclofaixa / compartilhada / sem infraestrutura.
 5. **Posições e fatores:** confira os terminais em `config.json` e ajuste `emissoes.json` com fontes oficiais.
 
 ---
@@ -152,7 +154,7 @@ O app consome só os formatos padrão. Para ligar dados reais, a troca acontece 
 
 ### 1. Tela unificada de jornada
 - Campos **De** e **Para** com autocomplete. Usa o **Nominatim/OpenStreetMap** por meio do servidor, com debounce de 500 ms, header `User-Agent` e limite de 1 req/s. Sem internet, usa a **lista local** de lugares de Indaiatuba. Tem botão **"Usar minha localização"**.
-- Mapa Leaflet (tiles OSM) com **camadas ligáveis**: ônibus ao vivo (ícone com o número da linha e a direção), traçado das linhas, estações Ecobike (bikes | vagas), patinetes (bateria) e ciclovias. As áreas dos terminais aparecem tracejadas (limite de 6 km/h).
+- Mapa Leaflet com o **mapa base do Waze** (tiles do Waze Live Map) e link "Abrir o destino no Waze" no detalhe da viagem com **camadas ligáveis**: ônibus ao vivo (ícone com o número da linha e a direção), traçado das linhas, estações Ecobike (bikes | vagas), patinetes (bateria) e ciclovias. As áreas dos terminais aparecem tracejadas (limite de 6 km/h).
 - **Planejador multimodal próprio** (sem OpenTripPlanner):
   - combina *caminhada / Ecobike / patinete* → **ônibus** → *caminhada / Ecobike / patinete*, além de "só bike/patinete" para distâncias curtas e "só ônibus + caminhada";
   - estima os tempos com 5 km/h a pé, 15 km/h de bike e patinete (6 km/h de patinete dentro da área do terminal) e o **próximo ônibus real do simulador** (horário + atraso atual);
@@ -161,7 +163,7 @@ O app consome só os formatos padrão. Para ligar dados reais, a troca acontece 
 - Ao tocar um card, a rota aparece no mapa: **ônibus** na cor da linha, **caminhada** pontilhada e **bike/patinete** com contorno do modal e miolo colorido pela segurança do trecho. O ETA continua atualizando ao vivo.
 
 ### 2. Rotas seguras e alertas
-- O grafo une uma **malha sintética de ruas** (grade de ~180 m; algumas "avenidas" e a zona industrial são vias sem infraestrutura) e as **ciclovias e ciclofaixas** do GeoJSON. O A* usa custo ×0,55 em ciclovia, ×0,7 em ciclofaixa, ×1,0 em rua compartilhada e ×1,8 em via sem infraestrutura.
+- O grafo usa o **viário real de Indaiatuba** (OpenStreetMap): respeita mão única para ônibus e bike/patinete, encaixa origem e destino na rua mais próxima e classifica cada via: ciclovias e ciclofaixas reais, ruas locais (compartilhada) e avenidas/rodovias (sem infraestrutura; ruas da zona industrial também contam como sem infraestrutura). O A* usa custo ×0,55 em ciclovia, ×0,7 em ciclofaixa, ×1,0 em rua compartilhada e ×1,8 em via sem infraestrutura.
 - Cores dos trechos: 🟩 ciclovia/ciclofaixa, 🟨 rua compartilhada, 🟥 sem infraestrutura. O app mostra "% do trajeto em ciclovia".
 - Alertas em tempo real (toasts):
   - "Seu ônibus 101 chega em 3 min";
@@ -191,7 +193,7 @@ O botão **Demo** no topo do app altera o simulador para provocar situações na
 |---|---|---|
 | **0:00** | No celular, toque em **"Demo: Casa → Fábrica"**. | Um trabalhador mora no Jardim Esplendor e trabalha no Distrito Industrial Nova Era. Em segundos aparecem 3 opções: **Bike + Ônibus 101 + Patinete**, Patinete + Ônibus 101 + Patinete e Ônibus 101 + caminhada. |
 | **0:25** | Mostre o primeiro card. | "Ônibus 101 chega em X min **(ao vivo)**", "5 bikes na estação Jardim Esplendor", "8 vagas para devolver no Terminal Central", **CO₂ evitado** e **% em ciclovia**, com a barra verde/amarela/vermelha. |
-| **0:45** | Toque no card e veja o mapa. | A bike segue pela ciclofaixa da Av. Presidente Vargas (verde) até o **Terminal Central**, o ônibus 101 (azul) vai até o distrito e o patinete faz o último km. Os ônibus andam no mapa a cada 3 s. |
+| **0:45** | Toque no card e veja o mapa. | A bike segue pelas ruas reais do bairro até o **Terminal Central**, o ônibus 101 (azul) vai até o distrito e o patinete faz o último km. Os ônibus andam no mapa a cada 3 s. |
 | **1:05** | **Demo → "Fazer o ônibus 101 chegar em 3 min"**. | Toast **"Seu ônibus 101 chega em 3 min"**. O card e o ônibus no mapa atualizam ao vivo. |
 | **1:20** | Toque em **"Simular viagem"** (30×). | O marcador azul sai de casa, pega a bike e entra na área do terminal: **"Área do terminal: limite de 6 km/h para autopropelidos"**. |
 | **1:40** | **Demo → "Esvaziar Ecobike Terminal Central"**. | Toast **"A estação Ecobike do Terminal Central ficou vazia. Há 3 patinetes a 90 m"**. No totem, a estação fica vermelha e aparece "use um patinete". |
@@ -220,7 +222,7 @@ O botão **Demo** no topo do app altera o simulador para provocar situações na
 
 ## Limitações conhecidas (é um protótipo)
 - Dados de ônibus, Ecobike, patinetes e ciclovias são **fictícios**. O serviço simulado roda 24 h para a demo funcionar a qualquer hora.
-- O grafo de ruas é **sintético**, então os trajetos de bike e caminhada são aproximados (sem o viário real).
+- O viário vem do OpenStreetMap e pode ter falhas (mão de direção, ciclovias faltando). Os tiles do Waze não têm API pública oficial para terceiros: para uso em produção é preciso autorização do Waze (programa Waze for Cities) ou voltar a um provedor de tiles licenciado.
 - O planejador considera **um** ônibus por viagem (sem baldeação entre linhas).
 - O estado da simulação fica em memória e reinicia junto com o servidor.
 - Os fatores de CO₂ e a equivalência em árvores são **aproximações** para fins de demonstração.

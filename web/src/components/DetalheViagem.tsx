@@ -4,6 +4,9 @@ import type { AoVivo, Itinerario, Trecho } from '../tipos';
 import { etaOnibus, hora, km } from '../util';
 import { CORES_INFRA, CORES_MODO } from './Mapa';
 
+/** Deep link oficial do Waze (abre o app no celular ou o Live Map no navegador). */
+const linkWaze = (p: { lat: number; lon: number }) => `https://waze.com/ul?ll=${p.lat},${p.lon}&navigate=yes`;
+
 function descricao(t: Trecho, it: Itinerario, aoVivo: AoVivo | null, agora: number): ReactNode {
   const min = Math.max(1, Math.round((t.fimMs - t.inicioMs) / 60000));
   if (t.modo === 'onibus' && t.onibus) {
@@ -48,6 +51,7 @@ function descricao(t: Trecho, it: Itinerario, aoVivo: AoVivo | null, agora: numb
 export default function DetalheViagem({ it, aoVivo, agora, children }: {
   it: Itinerario; aoVivo: AoVivo | null; agora: number; children?: ReactNode;
 }) {
+  const destino = it.trechos[it.trechos.length - 1].para;
   return (
     <section className="detalhe" aria-label="Detalhes da viagem">
       {children}
@@ -74,7 +78,10 @@ export default function DetalheViagem({ it, aoVivo, agora, children }: {
         })}
         <li className="trecho">
           <div className="trecho-icone" style={{ background: '#b91c1c' }}>B</div>
-          <div><p style={{ margin: 0, fontWeight: 700, color: '#64748b', fontSize: '.8rem' }}>{hora(it.chegadaMs)}</p><h4>Chegada</h4></div>
+          <div>
+            <p style={{ margin: 0, fontWeight: 700, color: '#64748b', fontSize: '.8rem' }}>{hora(it.chegadaMs)}</p><h4>Chegada</h4>
+            <p><a href={linkWaze(destino)} target="_blank" rel="noreferrer">Abrir o destino no Waze ↗</a></p>
+          </div>
         </li>
       </ol>
     </section>

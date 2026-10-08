@@ -1,13 +1,16 @@
 /**
  * Gera um feed GTFS estático FICTÍCIO para Indaiatuba em server/data/gtfs.
  * As linhas abaixo são inventadas para o protótipo; os terminais vêm de data/config.json.
+ * Os traçados (shapes) são calculados pelas RUAS REAIS de Indaiatuba (data/viario.json, gerado por
+ * `npm run baixar-viario`), respeitando a mão de direção, e cada parada é encaixada na via mais próxima.
  *
  * Uso: npm run gerar-gtfs
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { cumulative, type LatLon } from '../src/geo.js';
+import { cumulative, dist, type LatLon } from '../src/geo.js';
+import { pontoNaVia, rotear } from '../src/grafo.js';
 
 const DATA = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../data');
 const OUT = path.join(DATA, 'gtfs');
@@ -33,9 +36,15 @@ const stops: Stop[] = [
   { id: 'di_giomi', nome: 'Distrito Industrial Domingos Giomi', lat: -23.1316, lon: -47.2321 },
   { id: 'di_novaera', nome: 'Distrito Industrial Nova Era', lat: -23.1373, lon: -47.2290 },
 ];
+// Encaixa cada parada na via de ônibus mais próxima (o ponto fica na rua, não no meio da quadra).
+for (const s of stops) {
+  const q = pontoNaVia([s.lat, s.lon], 'onibus');
+  if (dist(q, [s.lat, s.lon]) <= 400) { s.lat = +q[0].toFixed(6); s.lon = +q[1].toFixed(6); }
+}
 const stopById = new Map(stops.map((s) => [s.id, s]));
 
-// Um item do traçado é uma parada (string) ou um ponto de curva [lat, lon].
+// Um item do traçado é uma parada (string) ou um ponto de passagem [lat, lon] (para forçar uma via).
+// Entre dois itens consecutivos, o ônibus segue o caminho mais rápido pelas ruas.
 type Item = string | LatLon;
 type Route = {
   id: string; curto: string; longo: string; cor: string; corTexto: string;
@@ -46,22 +55,22 @@ const routes: Route[] = [
   {
     id: '101', curto: '101', longo: 'Terminal Central ↔ Distrito Industrial Nova Era', cor: '1D4ED8', corTexto: 'FFFFFF',
     headwayMin: 10, offsetMin: 0,
-    tracado: [central.id, [-23.0990, -47.2098], rodoviario.id, [-23.1150, -47.2200], 'morada2', [-23.1250, -47.2335], 'di_giomi', 'di_novaera'],
+    tracado: [central.id, rodoviario.id, 'morada2', 'di_giomi', 'di_novaera'],
   },
   {
     id: '102', curto: '102', longo: 'Jd. Morada do Sol ↔ Rodoviária (via Parque Ecológico e Centro)', cor: 'B45309', corTexto: 'FFFFFF',
     headwayMin: 15, offsetMin: 4,
-    tracado: ['morada1', 'morada2', 'tancredo', [-23.1040, -47.2255], 'parqueeco', [-23.0900, -47.2200], 'centro', central.id, [-23.0990, -47.2098], rodoviario.id],
+    tracado: ['morada1', 'morada2', 'tancredo', 'parqueeco', 'centro', central.id, rodoviario.id],
   },
   {
     id: '103', curto: '103', longo: 'Jd. Morumbi ↔ Distrito Industrial Bartolomai', cor: 'BE185D', corTexto: 'FFFFFF',
     headwayMin: 20, offsetMin: 7,
-    tracado: ['morumbi', [-23.0740, -47.2090], 'cidadenova', central.id, [-23.0990, -47.2098], rodoviario.id, 'bartolomai'],
+    tracado: ['morumbi', 'cidadenova', central.id, rodoviario.id, 'bartolomai'],
   },
   {
     id: '104', curto: '104', longo: 'Circular Centro (Central → Pompéia → Rodoviária → Bartolomai)', cor: '0E7490', corTexto: 'FFFFFF',
     headwayMin: 12, offsetMin: 2, circular: true,
-    tracado: [central.id, 'centro', 'pompeia', 'recanto', rodoviario.id, 'bartolomai', [-23.0980, -47.2030], central.id],
+    tracado: [central.id, 'centro', 'pompeia', 'recanto', rodoviario.id, 'bartolomai', central.id],
   },
 ];
 
@@ -84,7 +93,14 @@ for (const r of routes) {
   const dirs = r.circular ? [r.tracado] : [r.tracado, [...r.tracado].reverse()];
   dirs.forEach((tracado, dir) => {
     const shapeId = `${r.id}_${dir}`;
-    const pts = tracado.map(coord);
+    // traçado pelas ruas: roteia entre cada par de itens consecutivos e guarda onde cada item caiu no shape
+    const pts: LatLon[] = [coord(tracado[0])];
+    const idxItem = [0];
+    for (let i = 1; i < tracado.length; i++) {
+      const rota = rotear(coord(tracado[i - 1]), coord(tracado[i]), 'onibus').pontos;
+      for (const p of rota.slice(1)) if (dist(p, pts[pts.length - 1]) >= 0.5) pts.push(p);
+      idxItem.push(pts.length - 1);
+    }
     const cum = cumulative(pts);
     pts.forEach((p, i) => shapesRows.push([shapeId, p[0].toFixed(6), p[1].toFixed(6), i + 1, cum[i].toFixed(1)]));
 
@@ -92,11 +108,11 @@ for (const r of routes) {
     const paradas: { stop: string; arr: number; dep: number; dist: number }[] = [];
     let t = 0;
     tracado.forEach((it, i) => {
-      if (i > 0) t += (cum[i] - cum[i - 1]) * secPorMetro;
+      if (i > 0) t += (cum[idxItem[i]] - cum[idxItem[i - 1]]) * secPorMetro;
       if (typeof it !== 'string') return;
       const terminal = it === central.id || it === rodoviario.id;
       const dwell = i === 0 || i === tracado.length - 1 ? 0 : terminal ? 60 : 20;
-      paradas.push({ stop: it, arr: Math.round(t), dep: Math.round(t + dwell), dist: cum[i] });
+      paradas.push({ stop: it, arr: Math.round(t), dep: Math.round(t + dwell), dist: cum[idxItem[i]] });
       t += dwell;
     });
 
